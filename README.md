@@ -15,7 +15,7 @@ Here are some ideas to get you started:
 - ⚡ Fun fact: ...
 -->
 
-<span>
+<div style="display:flex"; flex-direction:row;">
   <a href="https://www.python.org/" target="_blank">
   <img src="https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54"/>
   </a>
@@ -34,4 +34,4 @@ Here are some ideas to get you started:
   <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript" target="_blank">
   <img src="https://shields.io/badge/JavaScript-F7DF1E?logo=JavaScript&logoColor=000&style=flat-square/">
   </a>
-</span>
+</div>
