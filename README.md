@@ -1,3 +1,4 @@
+
 ![header](https://capsule-render.vercel.app/api?type=rounded&color=timeGradient&text=Welcome%20to%20Hood's%20GitHub%20👋&animation=twinkling&fontSize=40&fontAlignY=50&fontAlign=50&height=180)
 
 <!--
@@ -14,6 +15,8 @@ Here are some ideas to get you started:
 - 😄 Pronouns: ...
 - ⚡ Fun fact: ...
 -->
+
+<div align="center">
   <div class="logo-black">
   <a href="https://www.python.org/" target="_blank">
   <img src="https://img.shields.io/badge/python-3670A0?style=for-the-badge&height=100&logo=python&logoColor=ffdd54"/>
@@ -30,6 +33,7 @@ Here are some ideas to get you started:
   <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript" target="_blank">
   <img src="https://shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=JavaScript&logoColor=white"/>
   </a>
+</div>
 
 
 <h3 align="center">👩‍💻 My Github Stats 👩‍💻</h3>
