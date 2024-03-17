@@ -24,7 +24,7 @@
 <br>
 <br>
 
-<h3 align="center">Tech stack📝</h3>
+## 📝 Tech stack 📝
 <div align="center">
   <div class="logo-black">
   <a href="https://www.python.org/" target="_blank">
