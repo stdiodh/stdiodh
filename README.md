@@ -1,5 +1,8 @@
 ![header](https://capsule-render.vercel.app/api?type=rounded&color=timeGradient&text=Welcome%20to%20Hood's%20GitHub%20👋&animation=twinkling&fontSize=40&fontAlignY=50&fontAlign=50&height=180)
 
+
+
+<h3 align="center">Tech stack📝</h3>
 <div align="center">
   <div class="logo-black">
   <a href="https://www.python.org/" target="_blank">
