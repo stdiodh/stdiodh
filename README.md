@@ -1,16 +1,11 @@
 ![header](https://capsule-render.vercel.app/api?type=rounded&color=timeGradient&text=Welcome%20to%20Hood's%20GitHub%20👋&animation=twinkling&fontSize=40&fontAlignY=50&fontAlign=50&height=180)
 <br>
 <br>
-<br>
-<br>
-
 <h3>Until Back-end Deverloper 👊</h3>
 
 <br>
 <br>
 <br>
-
-
 
 ## ✨ Content ✨
 <div style="display:flex; flex-direction:row;">
@@ -44,6 +39,7 @@
     <img src="https://shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=JavaScript&logoColor=white"/>
   </a>
 </div>
+
 <br>
 <br>
 <br>
