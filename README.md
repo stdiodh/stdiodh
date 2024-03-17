@@ -1,4 +1,10 @@
 ![header](https://capsule-render.vercel.app/api?type=rounded&color=timeGradient&text=Welcome%20to%20Hood's%20GitHub%20👋&animation=twinkling&fontSize=40&fontAlignY=50&fontAlign=50&height=180)
+<br>
+  <a href="mailto:playlistdh@gmail.com">
+    <img
+      src="https://img.shields.io/badge/playlistdh@gmail.com-D14836?style=for-the-badge&logo=gmail&logoColor=white"/>&nbsp
+  </a>
+<h3 align="center">Content ✨</h3>
 
 
 
@@ -21,8 +27,9 @@
   <img src="https://shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=JavaScript&logoColor=white"/>
   </a>
 </div>
-<dr>
-</dr>
+  
+<br>
+
 
 
 <h3 align="center">My Github Stats👩‍💻</h3>
