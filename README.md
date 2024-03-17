@@ -4,21 +4,25 @@
 <br>
 <br>
 
+<h3 align="center"></h3>
+
+
+
 <h3 align="center">Content ✨</h3>
 <div align="center">
-  <a href="mailto:playlistdh@gmail.com">
-  <img src="https://img.shields.io/badge/playlistdh@gmail.com-D14836?style=for-the-badge&logo=gmail&logoColor=white"/>
-  </a>
-  <a href="https://www.instagram.com/stdio_dh/">
-  <img src="https://img.shields.io/badge/Instagram-E4405F?style=for-the-badge&logo=instagram&logoColor=white">
-  </a>
-  
+  <div style="display:flex; flex-direction:row;">
+    <a href="mailto:playlistdh@gmail.com">
+      <img src="https://img.shields.io/badge/playlistdh@gmail.com-D14836?style=for-the-badge&logo=gmail&logoColor=white"/>
+    </a>
+    <a href="https://www.instagram.com/stdio_dh/">
+      <img src="https://img.shields.io/badge/Instagram-E4405F?style=for-the-badge&logo=instagram&logoColor=white">
+    </a>
+  </div>
 </div>
 
 <br>
 <br>
 <br>
-
 
 <h3 align="center">Tech stack📝</h3>
 <div align="center">
@@ -44,9 +48,7 @@
 <br>
 <br>
 
-
 <h3 align="center">My Github Stats👩‍💻</h3>
-<hr width = "100%" color = "white">
 <div align="center">
   <img src="https://github-readme-stats.vercel.app/api?username=stdiodh&theme=holi&show_icons=true"&size_weight=1&count_weight=0/>
 </div>
