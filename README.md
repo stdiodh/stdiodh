@@ -21,6 +21,8 @@
   <img src="https://shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=JavaScript&logoColor=white"/>
   </a>
 </div>
+<dr>
+</dr>
 
 
 <h3 align="center">My Github Stats👩‍💻</h3>
