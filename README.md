@@ -4,7 +4,7 @@
 <br>
 <br>
 
-<h3>👊 Until Back-end Deverloper 👊</h3>
+<h3>Until Back-end Deverloper 👊</h3>
 
 <br>
 <br>
