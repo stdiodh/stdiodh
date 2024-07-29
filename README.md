@@ -15,6 +15,9 @@
   <a href="https://www.instagram.com/stdio_dh/">
     <img src="https://img.shields.io/badge/Instagram-E4405F?style=for-the-badge&logo=instagram&logoColor=white">
   </a>
+  <a href="https://velog.io/@stdiodh/posts">
+    <img src="https://img.shields.io/badge/Velog-20C997?style=flat&logo=Velog&logoColor=white">
+  </a>
 </div>
 
 <br>
@@ -26,8 +29,14 @@
   <a href="https://www.python.org/" target="_blank">
     <img src="https://img.shields.io/badge/python-3670A0?style=for-the-badge&height=100&logo=python&logoColor=ffdd54"/>
   </a>
-  <a href="https://www.djangoproject.com/" target="_blank">
-    <img src="https://img.shields.io/badge/Django-092E20?style=for-the-badge&logo=django&logoColor=green"/>
+  <a href="https://kotlinlang.org/docs/home.html" target="_blank">
+    <img src="https://img.shields.io/badge/Kotlin-7F52FF?style=for-the-badge&logo=Kotlin&logoColor=white"/>
+  </a>
+  <a href="https://docs.spring.io/spring-boot/index.html" target="_blank">
+    <img src="https://img.shields.io/badge/SpringBoot-6DB33F?style=flat-square&logo=Spring&logoColor=white"/>
+  </a>
+  <a href="https://dev.mysql.com/doc/" target="_blank">
+    <img src="https://img.shields.io/badge/MySQL-00000F?style=for-the-badge&logo=mariadb&logoColor=white"/>
   </a>
   <a href="https://developer.mozilla.org/ko/docs/Web/HTML" target="_blank">
     <img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=HTML5&logoColor=white"/>
