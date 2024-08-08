@@ -24,7 +24,7 @@
 <br>
 <br>
 
-## 📝 Tech stack 📝
+## 🌐 language 🌐
 <div style="display:flex; flex-direction:row;">
   <a href="https://www.python.org/" target="_blank">
     <img src="https://img.shields.io/badge/python-3670A0?style=for-the-badge&height=100&logo=python&logoColor=ffdd54"/>
@@ -32,6 +32,14 @@
   <a href="https://kotlinlang.org/docs/home.html" target="_blank">
     <img src="https://img.shields.io/badge/Kotlin-7F52FF?style=for-the-badge&logo=Kotlin&logoColor=white"/>
   </a>
+</div>
+
+<br>
+<br>
+<br>
+
+## 📝 Tech stack 📝
+<div style="display:flex; flex-direction:row;">
   <a href="https://docs.spring.io/spring-boot/index.html" target="_blank">
     <img src="https://img.shields.io/badge/SpringBoot-6DB33F?style=for-the-badge&logo=Spring&logoColor=white"/>
   </a>
