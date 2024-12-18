@@ -1,14 +1,11 @@
 ![header](https://capsule-render.vercel.app/api?type=rounded&color=timeGradient&text=Welcome%20to%20Hood's%20GitHub%20👋&animation=twinkling&fontSize=40&fontAlignY=50&fontAlign=50&height=180)
 <br>
-<br>
 <h3>Until Back-end Deverloper 👊</h3>
-<br>
 <br>
 
 ## 👀 My Beakjoon Profile 👀
 [![Solved.ac Profile](http://mazassumnida.wtf/api/v2/generate_badge?boj=mekazon)](https://solved.ac/mekazon/)
 
-<br>
 <br>
 <br>
 
@@ -25,7 +22,6 @@
   </a>
 </div>
 
-<br>
 <br>
 <br>
 
@@ -45,7 +41,6 @@
   </a>
 </div>
 
-<br>
 <br>
 <br>
 
