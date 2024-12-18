@@ -7,7 +7,6 @@
 [![Solved.ac Profile](http://mazassumnida.wtf/api/v2/generate_badge?boj=mekazon)](https://solved.ac/mekazon/)
 
 <br>
-<br>
 
 ## ✨ Content ✨
 <div style="display:flex; flex-direction:row;">
