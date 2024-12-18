@@ -2,7 +2,7 @@
 <br>
 <br>
 <h3>Until Back-end Deverloper 👊</h3>
-
+<br>
 ## 👀 My Beakjoon Profile 👀
 [![Solved.ac Profile](http://mazassumnida.wtf/api/v2/generate_badge?boj=mekazon)](https://solved.ac/mekazon/)
 <br>
@@ -48,6 +48,4 @@
 <br>
 
 ## 👩‍💻 My Github Stats 👩‍💻
-<div style="display:flex; flex-direction:row;">
-  <img src="https://github-readme-stats.vercel.app/api?username=stdiodh&theme=holi&show_icons=true"&size_weight=1&count_weight=0/>
-</div>
+[![stdiodh's GitHub stats](https://github-readme-stats.vercel.app/api?username=stdiodh&theme=holi&show_icons=true"&size_weight=1&count_weight=0)](https://github.com/stdiodh/github-readme-stats)
