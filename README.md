@@ -67,6 +67,4 @@
 </div>
 
 ## 👩‍💻 My Beakjoon Profile 👩‍💻
-<div style="display:flex; flex-direction:row;">
-  [![Solved.ac Profile](http://mazassumnida.wtf/api/v2/generate_badge?boj=mekazon)](https://solved.ac/mekazon/)
-</div>
+[![Solved.ac Profile](http://mazassumnida.wtf/api/v2/generate_badge?boj=mekazon)](https://solved.ac/mekazon/)
