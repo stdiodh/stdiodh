@@ -3,7 +3,10 @@
 <br>
 <h3>Until Back-end Deverloper 👊</h3>
 
+## 👀 My Beakjoon Profile 👀
+[![Solved.ac Profile](http://mazassumnida.wtf/api/v2/generate_badge?boj=mekazon)](https://solved.ac/mekazon/)
 <br>
+
 <br>
 <br>
 
@@ -24,36 +27,19 @@
 <br>
 <br>
 
-## 🌐 language 🌐
+## 📝 Skills 📝
 <div style="display:flex; flex-direction:row;">
-  <a href="https://www.python.org/" target="_blank">
-    <img src="https://img.shields.io/badge/python-3670A0?style=for-the-badge&height=100&logo=python&logoColor=ffdd54"/>
-  </a>
   <a href="https://kotlinlang.org/docs/home.html" target="_blank">
     <img src="https://img.shields.io/badge/Kotlin-7F52FF?style=for-the-badge&logo=Kotlin&logoColor=white"/>
   </a>
-</div>
-
-<br>
-<br>
-<br>
-
-## 📝 Tech stack 📝
-<div style="display:flex; flex-direction:row;">
+  <a href="https://www.python.org/" target="_blank">
+    <img src="https://img.shields.io/badge/python-3670A0?style=for-the-badge&height=100&logo=python&logoColor=ffdd54"/>
+  </a>
   <a href="https://docs.spring.io/spring-boot/index.html" target="_blank">
     <img src="https://img.shields.io/badge/SpringBoot-6DB33F?style=for-the-badge&logo=Spring&logoColor=white"/>
   </a>
   <a href="https://dev.mysql.com/doc/" target="_blank">
     <img src="https://img.shields.io/badge/MySQL-00000F?style=for-the-badge&logo=mariadb&logoColor=white"/>
-  </a>
-  <a href="https://developer.mozilla.org/ko/docs/Web/HTML" target="_blank">
-    <img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=HTML5&logoColor=white"/>
-  </a>
-  <a href="https://developer.mozilla.org/en-US/docs/Web/CSS" target="_blank">
-    <img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white"/>
-  </a>
-  <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript" target="_blank">
-    <img src="https://shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=JavaScript&logoColor=white"/>
   </a>
 </div>
 
@@ -65,6 +51,3 @@
 <div style="display:flex; flex-direction:row;">
   <img src="https://github-readme-stats.vercel.app/api?username=stdiodh&theme=holi&show_icons=true"&size_weight=1&count_weight=0/>
 </div>
-
-## 👀 My Beakjoon Profile 👀
-[![Solved.ac Profile](http://mazassumnida.wtf/api/v2/generate_badge?boj=mekazon)](https://solved.ac/mekazon/)
