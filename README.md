@@ -65,3 +65,8 @@
 <div style="display:flex; flex-direction:row;">
   <img src="https://github-readme-stats.vercel.app/api?username=stdiodh&theme=holi&show_icons=true"&size_weight=1&count_weight=0/>
 </div>
+
+## 👩‍💻 My Beakjoon Profile 👩‍💻
+<div style="display:flex; flex-direction:row;">
+  [![Solved.ac Profile](http://mazassumnida.wtf/api/v2/generate_badge?boj=mekazon)](https://solved.ac/mekazon/)
+</div>
