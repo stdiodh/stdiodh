@@ -49,5 +49,5 @@
 ## 👩‍💻 My Github Stats 👩‍💻
 <p>
   <img height="180em" src="https://github-readme-stats.vercel.app/api?username=stdiodh&theme=holi&show_icons=true"&size_weight=1&count_weight=0">
-  <img height="180em" src="https://github-readme-stats.vercel.app/api/top-langs/?username=stdiodh&layout=compact&theme=holi&hide_progress=true">
+  <img height="180em" src="https://github-readme-stats.vercel.app/api/top-langs/?username=stdiodh&layout=compact&theme=holi">
 </p>
