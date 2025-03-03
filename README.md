@@ -35,11 +35,11 @@
   <a href="https://docs.spring.io/spring-boot/index.html" target="_blank">
     <img src="https://img.shields.io/badge/SpringBoot-6DB33F?style=for-the-badge&logo=Spring&logoColor=white"/>
   </a>
-  <a href="https://dev.mysql.com/doc/" target="_blank">
-    <img src="https://img.shields.io/badge/MySQL-00000F?style=for-the-badge&logo=mariadb&logoColor=white"/>
-  </a>
   <a href="https://www.mongodb.com/docs/" target="_blank">
     <img src="https://img.shields.io/badge/MongoDB-47A248?style=for-the-badge&logo=mongodb&logoColor=white"/>
+  </a>
+  <a href="https://dev.mysql.com/doc/" target="_blank">
+    <img src="https://img.shields.io/badge/MySQL-00000F?style=for-the-badge&logo=mariadb&logoColor=white"/>
   </a>
 </div>
 
