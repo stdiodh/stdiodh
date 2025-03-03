@@ -1,7 +1,10 @@
 ![header](https://capsule-render.vercel.app/api?type=rounded&color=0:c6a7e0,100:7191e0&text=Welcome%20to%20Hood's%20GitHub%20👋&fontColor=ffffff&animation=twinkling&fontSize=40&fontAlignY=50&fontAlign=50&height=180)
-<br>
-<h3>Until Back-end Deverloper 👊</h3>
-<br>
+[![Typing SVG](https://readme-typing-svg.herokuapp.com?font=Fira+Code&pause=1000&color=7191E0&width=435&lines=Back-end+Developer;Problem+Solver;Lifelong+Learner)](https://git.io/typing-svg)
+
+## 🚀 About Me  
+👋 Hi, I'm Hood! I'm passionate about **Back-end development** and problem-solving.  
+🌱 Currently learning **Spring Boot** and **Kotlin**  
+Until Back-end Deverloper 👊
 
 ---
 
