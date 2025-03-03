@@ -13,23 +13,17 @@
 ---
 
 ## ✨ Connect with Me ✨  
-[![Gmail](https://img.shields.io/badge/-Gmail-D14836?style=flat&logo=gmail&logoColor=white)](mailto:playlistdh@gmail.com)  
-[![Instagram](https://img.shields.io/badge/-Instagram-E4405F?style=flat&logo=instagram&logoColor=white)](https://www.instagram.com/stdio_dh/)  
-[![Velog](https://img.shields.io/badge/-Velog-20C997?style=flat&logo=Velog&logoColor=white)](https://velog.io/@stdiodh/posts)  
+[![Gmail](https://img.shields.io/badge/-Gmail-D14836?style=flat&logo=gmail&logoColor=white)](mailto:playlistdh@gmail.com) [![Instagram](https://img.shields.io/badge/-Instagram-E4405F?style=flat&logo=instagram&logoColor=white)](https://www.instagram.com/stdio_dh/) [![Velog](https://img.shields.io/badge/-Velog-20C997?style=flat&logo=Velog&logoColor=white)](https://velog.io/@stdiodh/posts)  
 
 ## 🛠 Tech Stack 🛠  
 **Languages:**  
-![Kotlin](https://img.shields.io/badge/-Kotlin-7F52FF?style=flat&logo=Kotlin&logoColor=white)  
-![Python](https://img.shields.io/badge/-Python-3670A0?style=flat&logo=Python&logoColor=ffdd54)  
+![Kotlin](https://img.shields.io/badge/-Kotlin-7F52FF?style=flat&logo=Kotlin&logoColor=white) ![Python](https://img.shields.io/badge/-Python-3670A0?style=flat&logo=Python&logoColor=ffdd54)  
 
 **Frameworks & DB:**  
-![SpringBoot](https://img.shields.io/badge/-SpringBoot-6DB33F?style=flat&logo=Spring&logoColor=white)  
-![MongoDB](https://img.shields.io/badge/-MongoDB-47A248?style=flat&logo=mongodb&logoColor=white)  
-![MySQL](https://img.shields.io/badge/-MySQL-00000F?style=flat&logo=mariadb&logoColor=white)  
+![SpringBoot](https://img.shields.io/badge/-SpringBoot-6DB33F?style=flat&logo=Spring&logoColor=white) ![MongoDB](https://img.shields.io/badge/-MongoDB-47A248?style=flat&logo=mongodb&logoColor=white) ![MySQL](https://img.shields.io/badge/-MySQL-00000F?style=flat&logo=mariadb&logoColor=white)  
 
 **Dev Tools:**  
-![Docker](https://img.shields.io/badge/-Docker-2496ED?style=flat&logo=docker&logoColor=white)  
-![IntelliJ IDEA](https://img.shields.io/badge/-IntelliJ%20IDEA-000000?style=flat&logo=intellij-idea&logoColor=white)  
+![Docker](https://img.shields.io/badge/-Docker-2496ED?style=flat&logo=docker&logoColor=white) ![IntelliJ IDEA](https://img.shields.io/badge/-IntelliJ%20IDEA-000000?style=flat&logo=intellij-idea&logoColor=white)  
 
 
 ## 🔥 My GitHub Stats 🔥  
