@@ -48,8 +48,4 @@
   <img height="180em" src="https://github-readme-stats.vercel.app/api/top-langs/?username=stdiodh&layout=compact&theme=holi" />
 </p>
 
-[![GitHub Streak](https://streak-stats.demolab.com?user=stdiodh&theme=holi&hide_border=true)](https://git.io/streak-stats)
-
-[![trophy](https://github-profile-trophy.vercel.app/?username=stdiodh&theme=tokyonight&column=7)](https://github.com/ryo-ma/github-profile-trophy)
-
 ---
