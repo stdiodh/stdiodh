@@ -1,4 +1,4 @@
-![header](https://capsule-render.vercel.app/api?type=rounded&color=0:e0c3fc,100:8ec5fc&text=Welcome%20to%20Hood's%20GitHub%20👋&animation=twinkling&fontSize=40&fontAlignY=50&fontAlign=50&height=180)
+![header](https://capsule-render.vercel.app/api?type=rounded&color=0:e0c3fc,100:8ec5fc&text=Welcome%20to%20Hood's%20GitHub%20👋&fontColor=#2a2a72&animation=twinkling&fontSize=40&fontAlignY=50&fontAlign=50&height=180)
 <br>
 <h3>Until Back-end Deverloper 👊</h3>
 <br>
