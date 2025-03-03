@@ -5,13 +5,8 @@
 🌱 Currently learning **Spring Boot** and **Kotlin**  
 [![Typing SVG](https://readme-typing-svg.herokuapp.com?font=Fira+Code&pause=10000&color=ffffff&width=435&lines=Until+Back-end+Developer+👊)](https://git.io/typing-svg)
 
-
----
-
 ## 👀 My Baekjoon Profile 👀  
 [![Solved.ac Profile](http://mazassumnida.wtf/api/v2/generate_badge?boj=mekazon)](https://solved.ac/mekazon/)
-
----
 
 ## ✨ Connect with Me ✨  
 [![Gmail](https://img.shields.io/badge/-Gmail-D14836?style=flat&logo=gmail&logoColor=white)](mailto:playlistdh@gmail.com) [![Instagram](https://img.shields.io/badge/-Instagram-E4405F?style=flat&logo=instagram&logoColor=white)](https://www.instagram.com/stdio_dh/) [![Velog](https://img.shields.io/badge/-Velog-20C997?style=flat&logo=Velog&logoColor=white)](https://velog.io/@stdiodh/posts)  
