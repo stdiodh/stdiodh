@@ -9,7 +9,7 @@ val hood = developer {
     about {
         name = "Hood"
         role = Backend_Developer
-        focus = "Kotlin & Spring"
+        focus = listOf("Kotlin", "Spring")
     }
 
     motto {
