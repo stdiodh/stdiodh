@@ -5,7 +5,6 @@
 ## 허동현 · Server Developer
 
 Kotlin과 Spring Boot로 서버를 만들고, 개선했다고 말할 때는 측정한 숫자를 함께 남깁니다.
-교육 커뮤니티 A&I의 백엔드를 5개 서비스로 나눠 운영하고 있습니다.
 
 ## Projects
 
