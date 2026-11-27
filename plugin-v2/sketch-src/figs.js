@@ -34,41 +34,33 @@ ev: { w:874, h:418, draw(){
   line(R[0]+112,400,R[0]+132,400,{dash:true,c:SLATE,sw:1.2}); note(R[0]+138,400,'남은 것',{a:'start'});
 }},
 batch: { w:874, h:418, draw(){
-  text(40,34,'전',{size:16,w:700,a:'start'}); text(476,34,'후',{size:16,w:700,a:'start',c:BLUE});
-  const ys=[78,132,0,238]; const names=['과제 1','과제 2','','과제 30'];
-  const dbx=330, dby=158;
-  ys.forEach((y,i)=>{ if(!names[i]) { text(110,190,'⋮',{size:22,w:700}); return; }
-    label(55,y-17,110,34,names[i],{size:13});
-    path([[171,y-6],[250,y-20+ (dby-y)*0.35],[dbx-26,dby-8]],{arrow:true,sw:1.3});
-    path([[171,y+6],[250,y+14+(dby-y)*0.35],[dbx-26,dby+8]],{arrow:true,sw:1.3}); });
-  db(dbx+6,dby,46,56);
-  note(200,310,'과제마다 요구사항·테스트케이스를\n따로 읽음 → 과제가 늘면 조회도 늘어남',{size:13});
-  line(437,40,437,380,{dash:true,c:FAINT,sw:1.2});
-  label(490,118,140,80,'과제 ID\n한 번에 모으기',{c:BLUE,size:13});
-  db(800,158,46,56);
-  arrow(636,140,770,140,{label:'요구사항 한 번',c:BLUE,ly:-10});
-  arrow(636,178,770,178,{label:'테스트케이스 한 번',c:BLUE,ly:14});
-  check(560,300,8); text(578,300,'과제가 늘어도 2번',{size:15,w:700,a:'start'});
-  note(578,330,'바꾸기 전 응답 순서를 테스트로 먼저 남김',{a:'start'});
+  const base=330;
+  text(250,44,'P95 응답 시간',{size:15,w:700});
+  [[79,48,'과제 300개'],[187,128,'과제 1,000개']].forEach(([a,b,l],k)=>{ const x0=90+k*230;
+    [a,b].forEach((v,i)=>{ const h=Math.round(v/187*200), x=x0+i*80, B=i===1;
+      box(x,base-h,62,h,{r:3,c:B?BLUE:INK,fill:B?'#93C5FD':'#CBD5E1',gap:6});
+      text(x+31,base-h-18,v+'ms',{size:16,w:700,c:B?BLUE:INK}); text(x+31,base+22,B?'후':'전',{size:14,w:600,c:B?BLUE:SLATE}); });
+    text(x0+71,base+52,l,{size:14,w:600}); });
+  line(70,base,480,base,{sw:1.4});
+  line(540,60,540,380,{dash:true,c:FAINT,sw:1.1});
+  text(700,44,'초당 50건을 보낼 때 처리량',{size:15,w:700});
+  [[8.6,'8.6건'],[49.9,'50건']].forEach(([v,l],i)=>{ const h=Math.round(v/50*200), x=620+i*100, B=i===1;
+    box(x,base-h,62,h,{r:3,c:B?BLUE:INK,fill:B?'#93C5FD':'#CBD5E1',gap:6});
+    text(x+31,base-h-18,l,{size:16,w:700,c:B?BLUE:INK}); text(x+31,base+22,B?'후':'전',{size:14,w:600,c:B?BLUE:SLATE}); });
+  line(600,base,800,base,{sw:1.4});
 }},
 gw: { w:874, h:418, draw(){
-  text(40,30,'전',{size:16,w:700,a:'start'});
-  label(40,56,170,58,'설정 파일\nAPI 경로',{size:13});
-  label(40,150,170,58,'필터 코드\n권한 규칙',{size:13});
-  line(125,118,125,146,{dash:true,c:SLATE,sw:1.2});
-  note(232,132,'따로 고쳐서\n빠뜨리기 쉬움',{a:'start',c:SLATE});
-  arrow(330,132,400,132,{label:'한 곳으로',c:BLUE});
-  text(420,30,'후',{size:16,w:700,a:'start',c:BLUE});
-  label(420,92,170,80,'한 목록\n경로 + 권한',{c:BLUE,size:14});
-  arrow(596,132,650,132);
-  label(656,104,110,56,'Gateway',{size:14});
-  arrow(772,132,812,132); note(838,124,'허용한\nAPI만',{size:12,a:'middle'});
-  // steps
-  line(40,236,834,236,{dash:true,c:FAINT,sw:1.1});
-  const sx=[40,240,440]; const st=['① 지금 동작을\n테스트로 적기','② 새 목록을\n테스트에서만 돌리기','③ 운영 코드\n바꾸기'];
-  st.forEach((s,i)=>{ label(sx[i],270,170,60,s,{size:13,w:600}); if(i<2) arrow(sx[i]+176,300,sx[i+1]-6,300); });
-  arrow(616,300,656,300);
-  check(672,300,8); text(690,292,'판정 전 = 후',{size:15,w:700,a:'start'}); note(690,316,'사용자 5종으로 확인',{a:'start'});
+  text(60,70,'전',{size:16,w:700,a:'start'});
+  label(60,100,190,64,'설정 파일\nAPI 경로',{size:14});
+  label(60,236,190,64,'필터 코드\n권한 규칙',{size:14});
+  line(155,170,155,230,{dash:true,c:SLATE,sw:1.2});
+  path([[256,132],[300,160],[330,196]],{c:BLUE,sw:1.6}); path([[256,268],[300,240],[330,206]],{c:BLUE,sw:1.6});
+  arrow(330,200,392,200,{c:BLUE,sw:1.6});
+  text(410,70,'후',{size:16,w:700,a:'start',c:BLUE});
+  label(410,156,190,88,'한 목록\n경로 + 권한',{c:BLUE,size:15});
+  arrow(606,200,652,200);
+  label(658,172,140,56,'Gateway',{size:15});
+  note(728,262,'허용한 API만 통과',{size:14,c:INK,w:600});
 }},
 bot: { w:874, h:418, draw(){
   text(40,30,'전',{size:16,w:700,a:'start'});
@@ -90,18 +82,16 @@ bot: { w:874, h:418, draw(){
   box(572,232,262,130,{r:8});
   text(588,256,'시간 순서로 모인 로그',{size:12,w:600,a:'start',c:SLATE});
   [['Gateway','요청 받음'],['Web','채점 요청'],['채점 서버','타임아웃']].forEach(([a,b],i)=>{ text(590,286+i*26,a,{size:13,w:600,a:'start'}); text(700,286+i*26,b,{size:13,w:500,a:'start',c:i==2?RED:INK}); });
-  note(40,392,'봇은 조회만 함 · 토큰과 요청 본문은 남기지 않음 · 예시 값',{a:'start'});
 }},
 tests: { w:874, h:418, draw(){
-  const base=340, x0=90, bw=60, gap=62, vals=[188,277,338,388,456,602], labs=['시작','1차','2차','3차','정리 후','빈 분기 채움'];
-  line(60,base,840,base,{sw:1.4});
-  vals.forEach((v,i)=>{ const h=Math.round(v/602*230), x=x0+i*(bw+gap), last=i===vals.length-1;
-    box(x,base-h,bw,h,{r:3,c:last?BLUE:INK,fill:last?'#93C5FD':'#CBD5E1',gap:6});
-    text(x+bw/2,base+20,labs[i],{size:13,w:600,c:last?BLUE:INK});
-    if(i===0||last) text(x+bw/2,base-h-16,v+'개',{size:15,w:700,c:last?BLUE:INK}); });
-  for(let i=0;i<4;i++){ const xa=x0+i*(bw+gap)+bw+4, xb=x0+(i+1)*(bw+gap)-4; const ya=base-Math.round(vals[i]/602*230)-8, yb=base-Math.round(vals[i+1]/602*230)-8; path([[xa,ya],[(xa+xb)/2,Math.min(ya,yb)-18],[xb,yb]],{arrow:true,sw:1.1,c:SLATE}); }
-  note(70,40,'한 단계를 바꿀 때마다 전체 테스트가 통과해야 다음 단계로',{a:'start',size:13,c:INK,w:600});
-  note(70,62,'커버리지가 기준보다 낮으면 배포가 막히고, 테스트가 늘면 기준도 올림',{a:'start'});
+  const base=318;
+  const P=[[188,602,'188개','602개','테스트 수',602],[749,185,'749줄','185줄','과제 클래스',749],[140,109,'140초','109초','CI 시간',140]];
+  P.forEach(([a,b,la,lb,t,m],k)=>{ const x0=70+k*270;
+    text(x0+80,52,t,{size:15,w:700});
+    [a,b].forEach((v,i)=>{ const h=Math.round(v/m*200), x=x0+i*96, B=i===1;
+      box(x,base-h,64,h,{r:3,c:B?BLUE:INK,fill:B?'#93C5FD':'#CBD5E1',gap:6});
+      text(x+32,base-h-18,i?lb:la,{size:16,w:700,c:B?BLUE:INK}); text(x+32,base+22,B?'후':'전',{size:14,w:600,c:B?BLUE:SLATE}); });
+    line(x0-16,base,x0+176,base,{sw:1.4}); });
 }},
 'didim-admin': { w:874, h:418, draw(){
   const X=[200,440,680], ox=110, oy=340, sy=24; const yb=[2,6,11], ya=[2,2,2];
@@ -111,8 +101,8 @@ tests: { w:874, h:418, draw(){
   [2,6,11].forEach(v=>{ text(ox-14,oy-v*sy,String(v),{size:12,c:SLATE,a:'end'}); line(ox-4,oy-v*sy,ox+4,oy-v*sy,{sw:1}); });
   poly(X.map((x,i)=>[x,oy-yb[i]*sy]),{c:INK,sw:1.8}); X.forEach((x,i)=>circle(x,oy-yb[i]*sy,9,{fill:INK,c:INK}));
   poly(X.map((x,i)=>[x,oy-ya[i]*sy]),{c:BLUE,sw:2.4}); X.forEach((x,i)=>circle(x,oy-ya[i]*sy,9,{fill:BLUE,c:BLUE}));
-  note(696,oy-11*sy,'전: 회원마다 회고 수를\n한 번씩 더 읽음',{a:'start',c:INK,size:13});
-  note(696,oy-2*sy-26,'후: 항상 2번',{a:'start',c:BLUE,size:14,w:700});
+  note(700,oy-11*sy,'전',{a:'start',c:INK,size:15,w:700});
+  note(700,oy-2*sy-26,'후: 항상 2번',{a:'start',c:BLUE,size:15,w:700});
 }},
 'didim-split': { w:874, h:418, draw(){
   box(40,70,200,280,{r:8});
@@ -124,7 +114,6 @@ tests: { w:874, h:418, draw(){
   const names=['대상 수집','재시도 계획','작업 점유','상태 저장','Redis 스크립트','대상 목록','작업 시작','상태 조회','대상 검증','실행 루프','상태 계산','감사 로그','Redis 키'];
   line(629,92,629,112,{c:BLUE});
   names.forEach((n,i)=>{ const c=i%5, r=Math.floor(i/5); label(392+c*96,120+r*72,90,52,n,{size:13,w:600}); });
-  note(629,370,'역할 하나를 옮길 때마다 커밋 하나, 같은 테스트로 확인',{size:12});
 }},
 'didim-collect': { w:836, h:458, draw(){
   text(36,30,'전',{size:16,w:700,a:'start'});
@@ -143,7 +132,7 @@ tests: { w:874, h:418, draw(){
   path([[420,414],[470,404],[500,366]],{arrow:true,c:BLUE,sw:1.3}); note(520,402,'그 문제만 다시 수집',{a:'start',c:BLUE});
   db(708,340,50,58,'저장');
   [0,1,2,3].forEach(i=>arrow(650,316+i*16,680,316+i*16,{sw:1.1,c:BLUE}));
-  note(560,290,'빠지지 않는 걸 확인한 뒤 4개씩 동시에',{a:'start',c:INK,w:600});
+  note(590,290,'4개씩 동시에',{a:'start',c:INK,w:600,size:14});
 }},
 soloplay: { w:310, h:525, draw(){
   const x=40,w=230,h=52;
@@ -167,6 +156,37 @@ soloplay: { w:310, h:525, draw(){
     note(x+W/2,Y+H+30,N[i],{size:13}); if(i<2) arrow(x+W+6,Y+H/2,X[i+1]-8,Y+H/2,{sw:1.8}); });
   path([[X[2]+W/2,Y+H+50],[X[2]+W/2-40,Y+H+110],[447,Y+H+132],[X[0]+W/2+40,Y+H+110],[X[0]+W/2,Y+H+54]],{arrow:true,c:BLUE,sw:1.6});
   text(447,Y+H+160,'추천받은 문제를 다시 풀고 기록',{size:14,w:600,c:BLUE});
-  note(447,482,'로컬 Docker · 테스트 계정 · 고정 응답으로 찍은 화면',{size:11});
+}},
+arch: { w:894, h:503, draw(){
+  label(12,40,124,54,'Firebase Hosting\n웹 화면',{size:13,w:600,c:SLATE});
+  circle(62,176,28,{}); text(62,214,'사용자',{size:15,w:700});
+  arrow(62,148,70,100,{sw:1.4,c:SLATE});
+  arrow(96,190,170,190); text(124,174,'API 요청',{size:12,w:600,c:SLATE});
+  box(156,10,728,356,{dash:true,c:SLATE,sw:1.3}); text(176,34,'AWS',{size:14,w:700,a:'start',c:SLATE});
+  label(180,163,84,54,'Nginx',{size:14});
+  arrow(268,190,290,190);
+  label(294,157,124,66,'Gateway',{size:16,c:BLUE});
+  line(422,190,446,190,{sw:1.4});
+  const S=[['인증 서버','/auth'],['과제 서버 (Web)','/assign'],['채점 서버','/judge'],['블로그 서버','/blog']];
+  const ys=S.map((_,i)=>52+i*62+22);
+  line(446,ys[0],446,ys[3],{sw:1.4});
+  S.forEach(([n,r],i)=>{ const y=52+i*62; label(526,y,160,44,n,{size:14,c:i===1?BLUE:INK}); arrow(446,y+22,520,y+22,{sw:1.3}); text(486,y+10,r,{size:12,w:600,c:SLATE}); });
+  [['PostgreSQL',84],['MongoDB',164],['Redis',244]].forEach(([n,y])=>{ db(736,y,38,42,''); text(764,y,n,{size:13,w:600,a:'start'}); });
+  line(172,300,868,300,{dash:true,c:FAINT,sw:1.1});
+  text(176,333,'이벤트',{size:14,w:700,a:'start',c:SLATE});
+  const E=[['과제 서버','SNS → SQS','채점 서버'],['채점 서버','SNS → SQS','과제 서버']];
+  line(556,312,556,356,{dash:true,c:SLATE,sw:1.1});
+  E.forEach((e,i)=>{ const x=236+i*332, y=316; label(x,y,80,34,e[0],{size:12,w:600,c:i?INK:BLUE}); arrow(x+84,y+17,x+104,y+17,{sw:1.2});
+    label(x+108,y,92,34,e[1],{size:12,w:600}); arrow(x+204,y+17,x+222,y+17,{sw:1.2}); label(x+226,y,80,34,e[2],{size:12,w:600,c:i?BLUE:INK}); });
+  const C=['GitHub 저장소 5개','GitHub Actions\n빌드·테스트','Amazon ECR','서비스별 EC2\nDocker Compose'];
+  C.forEach((c,i)=>{ const x=176+i*180, w=152; label(x,414,w,58,c,{size:13,w:600}); if(i<3) arrow(x+w+4,443,x+176,443,{sw:1.3}); });
+  arrow(792,410,792,370,{sw:1.3});
+}},
+cover: { w:640, h:520, draw(){
+  text(70,260,'사용자',{size:15,w:700}); circle(70,224,30,{});
+  arrow(104,240,186,240);
+  label(190,204,150,72,'Gateway',{size:18,c:BLUE});
+  const N=['인증','과제 (Web)','채점','블로그'];
+  N.forEach((n,i)=>{ const y=80+i*100; label(420,y,170,56,n,{size:16,c:i===1?BLUE:INK}); path([[344,240],[380,240],[396,y+28],[414,y+28]],{arrow:true,sw:1.4}); });
 }},
 };

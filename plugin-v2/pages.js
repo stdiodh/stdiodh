@@ -67,6 +67,26 @@ async function fillItems(m, ids, items) {
   for (let i = 0; i < items.length; i++) { if (!items[i]) continue; await richKeep(m(ids[i][0]), items[i][0]); await setT(m(ids[i][1]), items[i][1]); }
 }
 
+// Final · 00: plain cover before the index page (not numbered)
+async function applyCover(page) {
+  for (const old of page.children.filter(c => c.name === 'Final · 00')) old.remove();
+  const f01 = await node('209:2');
+  const f = figma.createFrame(); page.appendChild(f); f.name = 'Final · 00'; f.resize(1600, 900); f.x = f01.x; f.y = f01.y - 1100; f.clipsContent = true;
+  f.fills = f01.fills.map(x => x.type === 'SOLID' ? { type: 'SOLID', color: x.color, opacity: x.opacity } : x);
+  await figma.loadFontAsync(P('Regular')); await figma.loadFontAsync(P('Bold'));
+  const T = (s, size, style, color, x, y, ls) => { const t = figma.createText(); t.fontName = P(style); t.fontSize = size; t.characters = s;
+    t.fills = [{ type: 'SOLID', color }]; if (ls != null) t.letterSpacing = { unit: 'PERCENT', value: ls }; f.appendChild(t); t.x = x; t.y = y; return t; };
+  T('PORTFOLIO 2026', 14, 'Bold', OR, 120, 200, 8);
+  T('허동현', 76, 'Bold', NAVY, 116, 300, -2);
+  T('Server Developer', 34, 'Regular', NAVY, 120, 410, -1);
+  const r = figma.createRectangle(); f.appendChild(r); r.resize(48, 3); r.x = 120; r.y = 486; r.fills = [{ type: 'SOLID', color: OR }];
+  T('A&I.com · 디딤로그 · 고찌봄 · SoloPlay · Investopia', 17, 'Regular', GRAY, 120, 512);
+  const row = await node('209:63'); const c = row.clone(); f.appendChild(c); c.x = 68; c.y = 784;
+  const im = figma.createRectangle(); f.appendChild(im); im.resize(640, 520); im.x = 860; im.y = 170;
+  im.fills = [{ type: 'IMAGE', scaleMode: 'FILL', imageHash: imageHash('cover') }];
+  return 'Final · 00';
+}
+
 async function applyPortfolio() {
   const page = await node('144:2'); await figma.setCurrentPageAsync(page);
   const done = [];
@@ -74,6 +94,8 @@ async function applyPortfolio() {
   if (!dpage) { dpage = figma.createPage(); dpage.name = DETAIL_PAGE; figma.root.insertChild(figma.root.children.indexOf(page) + 1, dpage); }
   await dpage.loadAsync();
   for (const pg of [page, dpage]) for (const old of pg.children.filter(c => /^Final · 0\d[a-z]$/.test(c.name))) old.remove(); // re-run safe, drops v2 detail frames
+
+  done.push(await applyCover(page));
 
   // 01 cover
   const cover = byId(await node('209:2'));
