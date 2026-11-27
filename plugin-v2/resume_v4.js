@@ -51,7 +51,7 @@ async function applyResumeV4() {
   (await node(N('448:137'))).layoutSizingVertical = 'HUG';
   await rm('448:140');                               // BOJ 인증 줄은 포트폴리오로
   done.push(await plain(N('448:133'), '백엔드 1인 개발')); done.push(await plain(N('448:135'), '2025.11–현재'));
-  done.push(await R('448:149', '문제 3,400건 상세 수집을 4개씩 병렬로 바꿔 ==55.6→12.2초(-78%)==,\n누락·중복 **0건**을 확인했습니다. (로컬 측정)'));
+  done.push(await R('448:149', '문제 3,400건 상세 수집을 4개씩 병렬로 바꿔 ==55.6→12.2초(-78%)==,\n누락·중복 **0건**을 확인했습니다.'));
   done.push(await R('448:154', '실패한 문제 ID를 Redis에 따로 남겨, 다시 시도할 때 빠진 문제 없이 이어서 모읍니다.'));
   done.push(await R('458:8', '관리자 회원 목록의 N+1을 없애 MongoDB 읽기를 ==11→2회==로 줄였습니다.'));
   done.push(await addBullet(N('458:8'), '2,754줄 수집 서비스를 역할별 클래스 **13개**로 나눴습니다. (가장 큰 클래스 469줄)'));
