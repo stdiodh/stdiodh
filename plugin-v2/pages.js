@@ -68,40 +68,21 @@ async function fillItems(m, ids, items) {
   for (let i = 0; i < items.length; i++) { if (!items[i]) continue; await richKeep(m(ids[i][0]), items[i][0]); await setT(m(ids[i][1]), items[i][1]); }
 }
 
-// Final · 00: plain cover before the index page (not numbered)
-async function applyCover(page) {
-  for (const old of page.children.filter(c => c.name === 'Final · 00')) old.remove();
-  const f01 = await node('209:2');
-  const f = figma.createFrame(); page.appendChild(f); f.name = 'Final · 00'; f.resize(1600, 900); f.x = f01.x; f.y = f01.y - 1100; f.clipsContent = true;
-  f.fills = f01.fills.map(x => x.type === 'SOLID' ? { type: 'SOLID', color: x.color, opacity: x.opacity } : x);
-  await figma.loadFontAsync(P('Regular')); await figma.loadFontAsync(P('Bold'));
-  const T = (s, size, style, color, x, y, ls) => { const t = figma.createText(); t.fontName = P(style); t.fontSize = size; t.characters = s;
-    t.fills = [{ type: 'SOLID', color }]; if (ls != null) t.letterSpacing = { unit: 'PERCENT', value: ls }; f.appendChild(t); t.x = x; t.y = y; return t; };
-  T('PORTFOLIO 2026', 14, 'Bold', OR, 120, 200, 8);
-  T('허동현', 76, 'Bold', NAVY, 116, 300, -2);
-  T('Server Developer', 34, 'Regular', NAVY, 120, 410, -1);
-  const r = figma.createRectangle(); f.appendChild(r); r.resize(48, 3); r.x = 120; r.y = 486; r.fills = [{ type: 'SOLID', color: OR }];
-  T('A&I.com · 디딤로그 · 고찌봄 · SoloPlay · Investopia', 17, 'Regular', GRAY, 120, 512);
-  const row = await node('209:63'); const c = row.clone(); f.appendChild(c); c.x = 68; c.y = 784;
-  const im = figma.createRectangle(); f.appendChild(im); im.resize(640, 520); im.x = 860; im.y = 170;
-  im.fills = [{ type: 'IMAGE', scaleMode: 'FILL', imageHash: imageHash('cover') }];
-  return 'Final · 00';
-}
 
 // one continuous copy of the whole portfolio, in reading order, on the main page (sources stay as they are)
 const COMBINED = '포트폴리오 · 통합';
 async function buildCombined(page, dpage) {
   for (const old of page.children.filter(c => c.name === COMBINED)) old.remove();
-  const order = ['Final · 00', ...PORDER], frames = [...page.children, ...dpage.children];
+  const order = PORDER, frames = [...page.children, ...dpage.children];
   const COLS = 5, W = 1600, H = 900, GAP = 100, PAD = 100;
   const sec = figma.createSection(); page.appendChild(sec); sec.name = COMBINED;
   const right = Math.max(...page.children.filter(c => /^Final · 0\d$/.test(c.name)).map(c => c.x + c.width));
-  sec.x = right + 400; const c00 = page.children.find(c => c.name === 'Final · 00'); sec.y = c00 ? c00.y : 372;
+  sec.x = right + 400; sec.y = (await node('209:2')).y;
   sec.resizeWithoutConstraints(PAD * 2 + COLS * W + (COLS - 1) * GAP, PAD * 2 + Math.ceil(order.length / COLS) * (H + GAP) - GAP);
   order.forEach((name, i) => {
     const src = frames.find(c => c.name === name); if (!src) throw new Error('frame ' + name);
     const f = src.clone(); sec.appendChild(f);
-    f.name = 'Portfolio ' + String(i).padStart(2, '0') + (i ? ' · ' + name.replace('Final · ', '') : ' · 표지');
+    f.name = 'Portfolio ' + String(i + 1).padStart(2, '0') + ' · ' + name.replace('Final · ', '');
     f.x = PAD + (i % COLS) * (W + GAP); f.y = PAD + Math.floor(i / COLS) * (H + GAP);
   });
   return COMBINED + ' ' + order.length + '쪽';
@@ -115,7 +96,7 @@ async function applyPortfolio() {
   await dpage.loadAsync();
   for (const pg of [page, dpage]) for (const old of pg.children.filter(c => /^Final · 0\d[a-z]$/.test(c.name))) old.remove(); // re-run safe, drops v2 detail frames
 
-  done.push(await applyCover(page));
+  for (const old of page.children.filter(c => c.name === 'Final · 00')) old.remove(); // cover is Final · 01 only
 
   // 01 cover
   const cover = byId(await node('209:2'));

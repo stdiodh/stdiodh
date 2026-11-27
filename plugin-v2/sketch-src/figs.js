@@ -3,25 +3,25 @@ ev: { w:874, h:418, draw(){
   const L=[40,190], M=[352,170], R=[650,184], hh=56;
   const rows=[70,200,320];
   // row A: Web 과제 저장 -> SNS/SQS -> 채점 서버
-  label(L[0],rows[0]-hh/2,L[1],hh,'Web · 과제 저장',{c:BLUE});
-  label(M[0],rows[0]-hh/2,M[1],hh,'SNS → SQS');
-  label(R[0],rows[0]-hh/2,R[1],hh,'채점 서버');
+  label(L[0],rows[0]-hh/2,L[1],hh,'Web · 과제 저장',{c:BLUE,icon:'assign'});
+  label(M[0],rows[0]-hh/2,M[1],hh,'SNS → SQS',{icon:'queue'});
+  label(R[0],rows[0]-hh/2,R[1],hh,'채점 서버',{icon:'judge'});
   arrow(L[0]+L[1]+6,rows[0],M[0]-6,rows[0],{label:'테스트케이스'});
   arrow(M[0]+M[1]+6,rows[0],R[0]-6,rows[0]);
   xmark((M[0]+M[1]+R[0])/2,rows[0],7);
   note((M[0]+M[1]+R[0])/2+14,rows[0]+48,'① 입력 형식이 달랐음\n문자열 하나 ↔ 인자 목록',{c:RED,a:'middle'});
   // row B: 인증 서버 -> SNS/SQS -> Web 회원 정보
-  label(R[0],rows[1]-hh/2,R[1],hh,'인증 서버');
-  label(M[0],rows[1]-hh/2,M[1],hh,'SNS → SQS');
-  label(L[0],rows[1]-hh/2,L[1],hh,'Web · 회원 정보',{c:BLUE});
+  label(R[0],rows[1]-hh/2,R[1],hh,'인증 서버',{icon:'auth'});
+  label(M[0],rows[1]-hh/2,M[1],hh,'SNS → SQS',{icon:'queue'});
+  label(L[0],rows[1]-hh/2,L[1],hh,'Web · 회원 정보',{c:BLUE,icon:'assign'});
   arrow(R[0]-6,rows[1],M[0]+M[1]+6,rows[1],{label:'회원 이벤트'});
   arrow(M[0]-6,rows[1],L[0]+L[1]+6,rows[1]);
   xmark((L[0]+L[1]+M[0])/2,rows[1],7);
   note((L[0]+L[1]+M[0])/2,rows[1]+46,'② 필드 이름이 달랐음\ntype ↔ eventType',{c:RED});
   // row C: 채점 서버 -> SNS/SQS -> Web 결과 사본 -> 관리자 화면
-  label(R[0],rows[2]-hh/2,R[1],hh,'채점 서버 · 채점 완료');
-  label(M[0],rows[2]-hh/2,M[1],hh,'SNS → SQS');
-  label(L[0],rows[2]-hh/2,L[1],hh,'Web · 결과 사본',{c:BLUE});
+  label(R[0],rows[2]-hh/2,R[1],hh,'채점 서버 · 채점 완료',{icon:'judge'});
+  label(M[0],rows[2]-hh/2,M[1],hh,'SNS → SQS',{icon:'queue'});
+  label(L[0],rows[2]-hh/2,L[1],hh,'Web · 결과 사본',{c:BLUE,icon:'assign'});
   arrow(R[0]-6,rows[2],M[0]+M[1]+6,rows[2]);
   arrow(M[0]-6,rows[2],L[0]+L[1]+6,rows[2]);
   arrow(L[0]+L[1]/2,rows[2]+hh/2+4,L[0]+L[1]/2,rows[2]+hh/2+34);
@@ -51,20 +51,20 @@ batch: { w:874, h:418, draw(){
 }},
 gw: { w:874, h:418, draw(){
   text(60,70,'전',{size:16,w:700,a:'start'});
-  label(60,100,190,64,'설정 파일\nAPI 경로',{size:14});
-  label(60,236,190,64,'필터 코드\n권한 규칙',{size:14});
+  label(60,100,190,64,'설정 파일\nAPI 경로',{size:14,icon:'file'});
+  label(60,236,190,64,'필터 코드\n권한 규칙',{size:14,icon:'lock'});
   line(155,170,155,230,{dash:true,c:SLATE,sw:1.2});
   path([[256,132],[300,160],[330,196]],{c:BLUE,sw:1.6}); path([[256,268],[300,240],[330,206]],{c:BLUE,sw:1.6});
   arrow(330,200,392,200,{c:BLUE,sw:1.6});
   text(410,70,'후',{size:16,w:700,a:'start',c:BLUE});
   label(410,156,190,88,'한 목록\n경로 + 권한',{c:BLUE,size:15});
   arrow(606,200,652,200);
-  label(658,172,140,56,'Gateway',{size:15});
+  label(654,172,148,56,'Gateway',{size:15,icon:'gateway'});
   note(728,262,'허용한 API만 통과',{size:14,c:INK,w:600});
 }},
 bot: { w:874, h:418, draw(){
   text(40,30,'전',{size:16,w:700,a:'start'});
-  label(40,54,90,46,'EC2',{size:13});
+  label(40,54,90,46,'EC2',{size:13,icon:'server'});
   [0,1,2].forEach(i=>{ label(170,48+i*40,110,30,'컨테이너 로그',{size:11,w:500,c:SLATE}); });
   arrow(134,77,164,63,{sw:1.2}); arrow(134,77,164,103,{sw:1.2}); arrow(134,77,164,143,{sw:1.2});
   note(160,190,'접속해서 하나씩 열어 봄',{size:12});
@@ -73,11 +73,11 @@ bot: { w:874, h:418, draw(){
   note(372,76,'요청',{size:13,c:INK});
   const xs=[410,560,710], ns=['Gateway','Web','채점 서버'];
   arrow(386,76,404,76);
-  xs.forEach((x,i)=>{ label(x,54,120,44,ns[i],{size:13}); if(i<2) arrow(x+124,76,xs[i+1]-6,76);
+  const BI=['gateway','assign','judge']; xs.forEach((x,i)=>{ label(x,54,120,44,ns[i],{size:13,icon:BI[i],is:20}); if(i<2) arrow(x+124,76,xs[i+1]-6,76);
     text(x+60,116,'trace a1b2',{size:11,w:600,c:BLUE});
     path([[x+60,128],[x+60+(600-x)*0.2,190],[690,228]],{dash:true,c:SLATE,sw:1.1}); });
   note(830,30,'Gateway가 요청마다 같은 traceId를 붙임',{a:'end'});
-  label(350,250,170,64,'Discord\n/ops trace a1b2',{c:BLUE,size:13});
+  label(350,250,170,64,'Discord\n/ops trace a1b2',{c:BLUE,size:13,icon:'chat',is:22});
   arrow(526,282,566,282,{c:BLUE});
   box(572,232,262,130,{r:8});
   text(588,256,'시간 순서로 모인 로그',{size:12,w:600,a:'start',c:SLATE});
@@ -136,15 +136,15 @@ tests: { w:874, h:418, draw(){
 }},
 soloplay: { w:310, h:525, draw(){
   const x=40,w=230,h=52;
-  label(x,30,w,h,'카카오 장소 검색',{size:14});
+  label(x,30,w,h,'카카오 장소 검색',{size:14,icon:'search',is:20});
   arrow(155,86,155,112);
-  label(x,116,w,h,'장소 ID로 중복 정리',{size:14});
+  label(x,116,w,h,'장소 ID로 중복 정리',{size:14,icon:'map',is:20});
   arrow(155,172,155,198);
-  label(x,202,w,h,'MongoDB에 먼저 저장',{size:14,c:BLUE});
+  label(x,202,w,h,'MongoDB에 먼저 저장',{size:14,c:BLUE,icon:'mongodb',is:22,solid:true});
   note(148,280,'장소는 여기서 남음',{c:BLUE,w:600}); check(216,277,6);
   line(155,296,155,334,{dash:true,c:SLATE,sw:1.3}); head(155,296,155,338,SLATE,1.3);
   note(165,318,'저장이 끝난 뒤 따로',{a:'start'});
-  label(x,344,w,h+6,'Gemini 소개·태그',{size:14,dash:true,c:SLATE});
+  label(x,344,w,h+6,'Gemini 소개·태그',{size:14,dash:true,c:SLATE,icon:'sparkle',is:20});
   xmark(272,346,6); note(155,428,'실패해도 장소 저장엔\n영향 없음',{c:RED});
 
 }},
@@ -158,28 +158,28 @@ soloplay: { w:310, h:525, draw(){
   text(447,Y+H+160,'추천받은 문제를 다시 풀고 기록',{size:14,w:600,c:BLUE});
 }},
 arch: { w:894, h:503, draw(){
-  label(12,40,124,54,'Firebase Hosting\n웹 화면',{size:13,w:600,c:SLATE});
-  circle(62,176,28,{}); text(62,214,'사용자',{size:15,w:700});
+  label(4,40,146,54,'Firebase Hosting\n웹 화면',{size:13,w:600,c:SLATE,icon:'firebase',is:20,solid:true});
+  icon(44,158,36,'user'); text(62,214,'사용자',{size:15,w:700});
   arrow(62,148,70,100,{sw:1.4,c:SLATE});
   arrow(96,190,170,190); text(124,174,'API 요청',{size:12,w:600,c:SLATE});
-  box(156,10,728,356,{dash:true,c:SLATE,sw:1.3}); text(176,34,'AWS',{size:14,w:700,a:'start',c:SLATE});
-  label(180,163,84,54,'Nginx',{size:14});
+  box(156,10,728,356,{dash:true,c:SLATE,sw:1.3}); icon(174,22,24,'cloud',{c:SLATE}); text(204,34,'AWS',{size:14,w:700,a:'start',c:SLATE});
+  label(176,163,90,54,'Nginx',{size:14,icon:'nginx',is:20});
   arrow(268,190,290,190);
-  label(294,157,124,66,'Gateway',{size:16,c:BLUE});
+  label(290,157,128,66,'Gateway',{size:16,c:BLUE,icon:'gateway',is:22});
   line(422,190,446,190,{sw:1.4});
-  const S=[['인증 서버','/auth'],['과제 서버 (Web)','/assign'],['채점 서버','/judge'],['블로그 서버','/blog']];
+  const S=[['인증 서버','/auth','auth'],['과제 서버 (Web)','/assign','assign'],['채점 서버','/judge','judge'],['블로그 서버','/blog','blog']];
   const ys=S.map((_,i)=>52+i*62+22);
   line(446,ys[0],446,ys[3],{sw:1.4});
-  S.forEach(([n,r],i)=>{ const y=52+i*62; label(526,y,160,44,n,{size:14,c:i===1?BLUE:INK}); arrow(446,y+22,520,y+22,{sw:1.3}); text(486,y+10,r,{size:12,w:600,c:SLATE}); });
-  [['PostgreSQL',84],['MongoDB',164],['Redis',244]].forEach(([n,y])=>{ db(736,y,38,42,''); text(764,y,n,{size:13,w:600,a:'start'}); });
+  S.forEach(([n,r,ic],i)=>{ const y=52+i*62; label(526,y,160,44,n,{size:14,c:i===1?BLUE:INK,icon:ic,is:20}); arrow(446,y+22,520,y+22,{sw:1.3}); text(486,y+10,r,{size:12,w:600,c:SLATE}); });
+  [['PostgreSQL',84,'postgresql'],['MongoDB',164,'mongodb'],['Redis',244,'fast']].forEach(([n,y,ic])=>{ db(730,y,32,40,''); icon(756,y-12,24,ic,{solid:true}); text(786,y,n,{size:13,w:600,a:'start'}); });
   line(172,300,868,300,{dash:true,c:FAINT,sw:1.1});
   text(176,333,'이벤트',{size:14,w:700,a:'start',c:SLATE});
   const E=[['과제 서버','SNS → SQS','채점 서버'],['채점 서버','SNS → SQS','과제 서버']];
   line(556,312,556,356,{dash:true,c:SLATE,sw:1.1});
   E.forEach((e,i)=>{ const x=236+i*332, y=316; label(x,y,80,34,e[0],{size:12,w:600,c:i?INK:BLUE}); arrow(x+84,y+17,x+104,y+17,{sw:1.2});
     label(x+108,y,92,34,e[1],{size:12,w:600}); arrow(x+204,y+17,x+222,y+17,{sw:1.2}); label(x+226,y,80,34,e[2],{size:12,w:600,c:i?BLUE:INK}); });
-  const C=['GitHub 저장소 5개','GitHub Actions\n빌드·테스트','Amazon ECR','서비스별 EC2\nDocker Compose'];
-  C.forEach((c,i)=>{ const x=176+i*180, w=152; label(x,414,w,58,c,{size:13,w:600}); if(i<3) arrow(x+w+4,443,x+176,443,{sw:1.3}); });
+  const C=['GitHub 저장소 5개','GitHub Actions\n빌드·테스트','Amazon ECR','서비스별 EC2\nDocker Compose'], CI=['github','ci','registry','container'];
+  C.forEach((c,i)=>{ const x=176+i*180, w=152; label(x,414,w,58,c,{size:13,w:600,icon:CI[i],is:20}); if(i<3) arrow(x+w+4,443,x+176,443,{sw:1.3}); });
   arrow(792,410,792,370,{sw:1.3});
 }},
 cover: { w:640, h:520, draw(){
