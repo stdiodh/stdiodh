@@ -188,7 +188,7 @@ const PDATA = {
         ['백엔드를 혼자 맡았습니다', 'API 설계, 로그인·권한, 문제 수집, 풀이 기록,\n회고, AI 리뷰, 관리자 도구를 만들었습니다.'],
       ],
       caption: '풀이 기록에서 회고, 다음 문제 추천까지', img: 'didim-intro',
-      link: ['Github', 'https://github.com/didim-log/didim-log-BE'] },
+      link: ['GitHub', 'https://github.com/didim-log/didim-log-BE'] },
   ],
   // detail pages: template Final · 03 (209:154). inPlace = edit Final · 03 itself.
   details: [
@@ -202,7 +202,7 @@ const PDATA = {
       ],
       metrics: [],
       caption: '과제·회원·채점 결과가 오가는 길과 막혔던 곳',
-      link: ['설계 문서 보기', REPO + 'A-AND-I-WEB-SERVER/blob/main/docs/adr/0001-assignment-event-consistency.md'] },
+      link: ['GitHub', REPO + 'A-AND-I-WEB-SERVER/blob/main/docs/adr/0001-assignment-event-consistency.md'] },
     { name: 'Final · 03', inPlace: true, img: 'batch', head: ['A&I.com', '과제 목록 조회', '2026.07'],
       title: '과제가 늘수록 느려지던 목록의 \n**N+1 조회**를 2번으로 줄였습니다.',
       steps: [
@@ -213,7 +213,7 @@ const PDATA = {
       ],
       metrics: [['추가 조회 (과제 30개)', '60 → 2번'], ['과제 1,000개 P95', '187 → 128ms']],
       caption: '같은 부하에서 바꾸기 전과 후',
-      link: ['측정 기록 보기', REPO + 'A-AND-I-WEB-SERVER/blob/main/docs/performance/results/2026-11-26-assignment-list-scale-before-after.md'] },
+      link: ['GitHub', REPO + 'A-AND-I-WEB-SERVER/blob/main/docs/performance/results/2026-11-26-assignment-list-scale-before-after.md'] },
     { name: 'Final · 03a', img: 'gw', head: ['A&I.com', 'Gateway 권한', '2026.07-11'],
       title: '허용한 API만 들어오도록 \n**권한을 Gateway**에 모았습니다.',
       steps: [
@@ -224,7 +224,7 @@ const PDATA = {
       ],
       metrics: [['Gateway 테스트', '190 → 282개']],
       caption: '흩어진 경로와 권한을 한 목록으로',
-      link: ['기록 보기', REPO + 'A-AND-I-GATEWAY-SERVER/blob/main/docs/REFACTORING_PLAN.md'] },
+      link: ['GitHub', REPO + 'A-AND-I-GATEWAY-SERVER/blob/main/docs/REFACTORING_PLAN.md'] },
     { name: 'Final · 03b', img: 'bot', head: ['A&I.com', '운영 봇 (Go)', '2026.05-'],
       title: '장애가 나면 Discord에서 \n**요청 하나를 따라가게** 했습니다.',
       steps: [
@@ -235,7 +235,7 @@ const PDATA = {
       ],
       metrics: [],
       caption: 'traceId 하나로 여러 서비스 로그를 모아 보는 흐름',
-      link: ['기록 보기', REPO + 'A-AND-I-GATEWAY-SERVER/blob/main/monitor-bot/README.md'] },
+      link: ['GitHub', REPO + 'A-AND-I-GATEWAY-SERVER/blob/main/monitor-bot/README.md'] },
     { name: 'Final · 03c', img: 'tests', head: ['A&I.com', '테스트와 배포 기준', '2026.06-11'],
       title: '나누다 동작이 바뀌어도 알 수 있게 \n**테스트부터** 늘렸습니다.',
       steps: [
@@ -246,7 +246,7 @@ const PDATA = {
       ],
       metrics: [['테스트 수', '188 → 602개'], ['배포 기준 라인 커버리지', '70 → 86%']],
       caption: '바꾸기 전과 후',
-      link: ['기록 보기', REPO + 'A-AND-I-WEB-SERVER/blob/main/docs/refactoring/2026-07-stable-refactoring.md'] },
+      link: ['GitHub', REPO + 'A-AND-I-WEB-SERVER/blob/main/docs/refactoring/2026-07-stable-refactoring.md'] },
     { name: 'Final · 04b', img: 'didim-admin', head: ['디딤로그', '관리자 회원 목록', '2026.07'],
       title: '회원이 늘어도 관리자 목록이 \n**무거워지지 않게** 했습니다.',
       steps: [
@@ -257,7 +257,7 @@ const PDATA = {
       ],
       metrics: [['한 페이지(10명) DB 읽기', '11 → 2번'], ['회원 1,000명일 때 검사한 문서', '1,000 → 20건']],
       caption: '한 페이지 회원 수에 따른 DB 읽기 횟수',
-      link: ['기록 보기', 'https://github.com/didim-log/didim-log-BE/blob/main/DOCS/refactoring/be-refactor/ADMIN_QUERY_OPTIMIZATION_OVERVIEW.md'] },
+      link: ['GitHub', 'https://github.com/didim-log/didim-log-BE/blob/main/DOCS/refactoring/be-refactor/ADMIN_QUERY_OPTIMIZATION_OVERVIEW.md'] },
     { name: 'Final · 04c', img: 'didim-split', head: ['디딤로그', '수집 서비스 나누기', '2026.11'],
       title: '2,754줄짜리 수집 서비스를 \n**역할별로** 나눴습니다.',
       steps: [
@@ -268,7 +268,7 @@ const PDATA = {
       ],
       metrics: [['가장 큰 클래스', '2,754 → 469줄']],
       caption: '나누기 전과 후의 클래스 크기',
-      link: ['PR 보기', 'https://github.com/didim-log/didim-log-BE/pull/122'] },
+      link: ['GitHub', 'https://github.com/didim-log/didim-log-BE/pull/122'] },
   ],
   // Final · 04 (디딤 ① 수집)
   collect: { head: ['디딤로그', '문제 수집', '2026.07-08'],
@@ -335,6 +335,19 @@ async function parts(n, list) {
   for (const [t, c] of list) { n.setRangeFontName(i, i + t.length, style); n.setRangeFills(i, i + t.length, [{ type: 'SOLID', color: C[c] }]); i += t.length; }
 }
 async function link(n, text, url) { await setT(n, text); n.setRangeHyperlink(0, text.length, { type: 'URL', value: url }); }
+// GitHub links read "GitHub" with a small GitHub mark before the text, same color as the text
+const GH_PATH = 'M12 0.297C5.37 0.297 0 5.67 0 12.297 0 17.6 3.438 22.097 8.205 23.682 8.805 23.795 9.025 23.424 9.025 23.105 9.025 22.82 9.015 22.065 9.01 21.065 5.672 21.789 4.968 19.455 4.968 19.455 4.422 18.07 3.633 17.7 3.633 17.7 2.546 16.956 3.717 16.971 3.717 16.971 4.922 17.055 5.555 18.207 5.555 18.207 6.625 20.042 8.364 19.512 9.05 19.205 9.158 18.429 9.467 17.9 9.81 17.6 7.145 17.3 4.344 16.268 4.344 11.67 4.344 10.36 4.809 9.29 5.579 8.45 5.444 8.147 5.039 6.927 5.684 5.274 5.684 5.274 6.689 4.952 8.984 6.504 9.944 6.237 10.964 6.105 11.984 6.099 13.004 6.105 14.024 6.237 14.984 6.504 17.264 4.952 18.269 5.274 18.269 5.274 18.914 6.927 18.509 8.147 18.389 8.45 19.154 9.29 19.619 10.36 19.619 11.67 19.619 16.28 16.814 17.295 14.144 17.59 14.564 17.95 14.954 18.686 14.954 19.81 14.954 21.416 14.939 22.706 14.939 23.096 14.939 23.411 15.149 23.786 15.764 23.666 20.565 22.092 24 17.592 24 12.297 24 5.67 18.627 0.297 12 0.297';
+function ghMark(t) {
+  const f = t.parent; for (const k of f.children.filter(k => k.name === 'GitHub mark')) k.remove();
+  f.layoutMode = 'HORIZONTAL'; f.primaryAxisSizingMode = 'AUTO'; f.counterAxisSizingMode = 'AUTO'; f.counterAxisAlignItems = 'CENTER'; f.itemSpacing = 5;
+  const color = t.getStyledTextSegments(['fills'])[0].fills[0].color;
+  const g = figma.createNodeFromSvg('<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"><path d="' + GH_PATH + '"/></svg>');
+  g.name = 'GitHub mark'; g.fills = []; for (const v of g.findAll(n => n.type === 'VECTOR')) v.fills = [{ type: 'SOLID', color }];
+  f.insertChild(0, g);
+}
+async function ghLink(n, text, url) { await link(n, text, url); ghMark(n); }
+// keep the node's current URL, change only the label and add the mark
+async function ghKeep(n, text) { const url = n.getStyledTextSegments(['hyperlink']).find(s => s.hyperlink).hyperlink.value; await ghLink(n, text, url); }
 function imageHash(key) { if (!IMAGES[key]) throw new Error('이미지 없음: ' + key); return figma.createImage(figma.base64Decode(IMAGES[key])).hash; }
 function swapImg(n, key) { const h = imageHash(key); n.fills = n.fills.map(f => f.type === 'IMAGE' ? Object.assign({}, f, { imageHash: h }) : f); }
 function setImg(n, key, w, h) {
@@ -360,7 +373,7 @@ async function fillIntro(m, d) {
   const im = m('209:146');
   if (d.clone) {
     im.fills = [{ type: 'IMAGE', scaleMode: 'FILL', imageHash: imageHash(d.img) }]; for (const k of im.children) k.visible = false;
-    await link(m('209:132'), d.link[0], d.link[1]);
+    await ghLink(m('209:132'), d.link[0], d.link[1]);
     m('209:137').parent.parent.visible = false; m('209:142').parent.parent.visible = false;
   } else {
     const h = imageHash(d.img); im.fills = im.fills.map(f => f.type === 'IMAGE' ? Object.assign({}, f, { imageHash: h }) : f);
@@ -377,7 +390,7 @@ async function fillDetail(m, d) {
   m('209:194').visible = ms.length > 0;
   for (let i = 0; i < 2; i++) { m(MC[i][0]).visible = !!ms[i]; if (ms[i]) { await setT(m(MC[i][1]), ms[i][0]); await setT(m(MC[i][2]), ms[i][1]); } }
   await setT(m('209:212'), d.caption);
-  await link(m('209:215'), d.link[0], d.link[1]);
+  await ghLink(m('209:215'), d.link[0], d.link[1]);
   setImg(m('209:208'), d.img, 874, 418);
 }
 
@@ -420,11 +433,13 @@ async function applyPortfolio() {
   await setT(cover('209:9'), 'Server Developer');
   for (const [i, id] of ['209:14', '209:16', '209:18'].entries()) await parts(cover(id), PDATA.cover.lines[i]);
   for (const [id, t] of Object.entries(PDATA.cover.subs)) await setT(cover(id), t);
+  await ghKeep(cover('209:70'), 'GitHub');
   done.push('Final · 01');
 
   // 02 A&I intro (in place), then 04a = clone of 02
   const f02 = await node('209:88');
-  await fillIntro(byId(f02), PDATA.intros[0]); done.push('Final · 02');
+  await fillIntro(byId(f02), PDATA.intros[0]);
+  await ghKeep(await node('209:137'), 'Gateway GitHub'); await ghKeep(await node('209:142'), 'Web GitHub'); done.push('Final · 02');
   const c04a = f02.clone(); dpage.appendChild(c04a); c04a.name = 'Final · 04a'; c04a.x = 0; c04a.y = 2 * 1100;
   await fillIntro(cloneMap(f02, c04a), PDATA.intros[1]); done.push('Final · 04a');
 
@@ -445,25 +460,25 @@ async function applyPortfolio() {
     await fillItems(m, [['209:261', '209:263'], ['209:267', '209:269'], ['209:273', '209:275'], ['209:279', '209:281']], d.items);
     const M = [['209:241', '209:243', '209:245'], ['209:248', '209:250', '209:252']];
     for (let i = 0; i < 2; i++) for (let j = 0; j < 3; j++) await setT(m(M[i][j]), d.metrics[i][j]);
-    await setT(m('209:237'), d.caption); setImg(m('209:235'), d.img, 836, 458); done.push('Final · 04'); }
+    await setT(m('209:237'), d.caption); setImg(m('209:235'), d.img, 836, 458); await ghKeep(m('209:291'), 'GitHub'); done.push('Final · 04'); }
 
   // 05 고찌봄
   { const m = byId(await node('209:299')), d = PDATA.gozzi;
     await setT(m('209:306'), d.role); await richKeep(m('209:311'), d.title); await setT(m('209:313'), d.sub);
     await fillItems(m, [['209:318', '209:320'], ['209:324', '209:326'], ['209:330', '209:332'], ['209:336', '209:338']], d.items);
-    swapImg(m('209:352'), 'gozzi'); done.push('Final · 05'); }
+    swapImg(m('209:352'), 'gozzi'); await ghKeep(m('209:348'), 'GitHub'); done.push('Final · 05'); }
 
   // 06 SoloPlay
   { const m = byId(await node('209:378')), d = PDATA.solo;
     await setT(m('209:385'), d.role); await richKeep(m('209:396'), d.title); await setT(m('209:398'), d.sub);
     await fillItems(m, [['209:403', '209:405'], ['209:409', '209:411'], ['209:415', '209:417'], ['209:421', '209:423']], d.items);
-    await setT(m('209:394'), d.caption); setImg(m('209:392'), d.img, 310, 525); done.push('Final · 06'); }
+    await setT(m('209:394'), d.caption); setImg(m('209:392'), d.img, 310, 525); await ghKeep(m('209:428'), 'GitHub'); done.push('Final · 06'); }
 
   // 07 Investopia
   { const m = byId(await node('209:436')), d = PDATA.invest;
     await setT(m('209:443'), d.role); await setT(m('209:450'), d.sub);
     await fillItems(m, [['209:455', '209:457'], ['209:461', '209:463'], ['209:467', '209:469'], ['209:473', '209:475']], d.items);
-    swapImg(m('209:486'), 'invest'); done.push('Final · 07'); }
+    swapImg(m('209:486'), 'invest'); await ghKeep(m('209:480'), 'GitHub'); done.push('Final · 07'); }
 
   // footers "NN / 14" and cover page ranges
   const frames = [...page.children, ...dpage.children];

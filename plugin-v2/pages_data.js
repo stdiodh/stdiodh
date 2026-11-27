@@ -37,7 +37,7 @@ const PDATA = {
         ['백엔드를 혼자 맡았습니다', 'API 설계, 로그인·권한, 문제 수집, 풀이 기록,\n회고, AI 리뷰, 관리자 도구를 만들었습니다.'],
       ],
       caption: '풀이 기록에서 회고, 다음 문제 추천까지', img: 'didim-intro',
-      link: ['Github', 'https://github.com/didim-log/didim-log-BE'] },
+      link: ['GitHub', 'https://github.com/didim-log/didim-log-BE'] },
   ],
   // detail pages: template Final · 03 (209:154). inPlace = edit Final · 03 itself.
   details: [
@@ -51,7 +51,7 @@ const PDATA = {
       ],
       metrics: [],
       caption: '과제·회원·채점 결과가 오가는 길과 막혔던 곳',
-      link: ['설계 문서 보기', REPO + 'A-AND-I-WEB-SERVER/blob/main/docs/adr/0001-assignment-event-consistency.md'] },
+      link: ['GitHub', REPO + 'A-AND-I-WEB-SERVER/blob/main/docs/adr/0001-assignment-event-consistency.md'] },
     { name: 'Final · 03', inPlace: true, img: 'batch', head: ['A&I.com', '과제 목록 조회', '2026.07'],
       title: '과제가 늘수록 느려지던 목록의 \n**N+1 조회**를 2번으로 줄였습니다.',
       steps: [
@@ -62,7 +62,7 @@ const PDATA = {
       ],
       metrics: [['추가 조회 (과제 30개)', '60 → 2번'], ['과제 1,000개 P95', '187 → 128ms']],
       caption: '같은 부하에서 바꾸기 전과 후',
-      link: ['측정 기록 보기', REPO + 'A-AND-I-WEB-SERVER/blob/main/docs/performance/results/2026-11-26-assignment-list-scale-before-after.md'] },
+      link: ['GitHub', REPO + 'A-AND-I-WEB-SERVER/blob/main/docs/performance/results/2026-11-26-assignment-list-scale-before-after.md'] },
     { name: 'Final · 03a', img: 'gw', head: ['A&I.com', 'Gateway 권한', '2026.07-11'],
       title: '허용한 API만 들어오도록 \n**권한을 Gateway**에 모았습니다.',
       steps: [
@@ -73,7 +73,7 @@ const PDATA = {
       ],
       metrics: [['Gateway 테스트', '190 → 282개']],
       caption: '흩어진 경로와 권한을 한 목록으로',
-      link: ['기록 보기', REPO + 'A-AND-I-GATEWAY-SERVER/blob/main/docs/REFACTORING_PLAN.md'] },
+      link: ['GitHub', REPO + 'A-AND-I-GATEWAY-SERVER/blob/main/docs/REFACTORING_PLAN.md'] },
     { name: 'Final · 03b', img: 'bot', head: ['A&I.com', '운영 봇 (Go)', '2026.05-'],
       title: '장애가 나면 Discord에서 \n**요청 하나를 따라가게** 했습니다.',
       steps: [
@@ -84,7 +84,7 @@ const PDATA = {
       ],
       metrics: [],
       caption: 'traceId 하나로 여러 서비스 로그를 모아 보는 흐름',
-      link: ['기록 보기', REPO + 'A-AND-I-GATEWAY-SERVER/blob/main/monitor-bot/README.md'] },
+      link: ['GitHub', REPO + 'A-AND-I-GATEWAY-SERVER/blob/main/monitor-bot/README.md'] },
     { name: 'Final · 03c', img: 'tests', head: ['A&I.com', '테스트와 배포 기준', '2026.06-11'],
       title: '나누다 동작이 바뀌어도 알 수 있게 \n**테스트부터** 늘렸습니다.',
       steps: [
@@ -95,7 +95,7 @@ const PDATA = {
       ],
       metrics: [['테스트 수', '188 → 602개'], ['배포 기준 라인 커버리지', '70 → 86%']],
       caption: '바꾸기 전과 후',
-      link: ['기록 보기', REPO + 'A-AND-I-WEB-SERVER/blob/main/docs/refactoring/2026-07-stable-refactoring.md'] },
+      link: ['GitHub', REPO + 'A-AND-I-WEB-SERVER/blob/main/docs/refactoring/2026-07-stable-refactoring.md'] },
     { name: 'Final · 04b', img: 'didim-admin', head: ['디딤로그', '관리자 회원 목록', '2026.07'],
       title: '회원이 늘어도 관리자 목록이 \n**무거워지지 않게** 했습니다.',
       steps: [
@@ -106,7 +106,7 @@ const PDATA = {
       ],
       metrics: [['한 페이지(10명) DB 읽기', '11 → 2번'], ['회원 1,000명일 때 검사한 문서', '1,000 → 20건']],
       caption: '한 페이지 회원 수에 따른 DB 읽기 횟수',
-      link: ['기록 보기', 'https://github.com/didim-log/didim-log-BE/blob/main/DOCS/refactoring/be-refactor/ADMIN_QUERY_OPTIMIZATION_OVERVIEW.md'] },
+      link: ['GitHub', 'https://github.com/didim-log/didim-log-BE/blob/main/DOCS/refactoring/be-refactor/ADMIN_QUERY_OPTIMIZATION_OVERVIEW.md'] },
     { name: 'Final · 04c', img: 'didim-split', head: ['디딤로그', '수집 서비스 나누기', '2026.11'],
       title: '2,754줄짜리 수집 서비스를 \n**역할별로** 나눴습니다.',
       steps: [
@@ -117,7 +117,7 @@ const PDATA = {
       ],
       metrics: [['가장 큰 클래스', '2,754 → 469줄']],
       caption: '나누기 전과 후의 클래스 크기',
-      link: ['PR 보기', 'https://github.com/didim-log/didim-log-BE/pull/122'] },
+      link: ['GitHub', 'https://github.com/didim-log/didim-log-BE/pull/122'] },
   ],
   // Final · 04 (디딤 ① 수집)
   collect: { head: ['디딤로그', '문제 수집', '2026.07-08'],
