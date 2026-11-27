@@ -37,7 +37,7 @@ async function applyResumeV4() {
     '2년간 5개 프로젝트에서 자동화 테스트 ==2,413개==로 라인 커버리지 ==89.95%==를 검증했습니다.\n' +
     '모놀리식 백엔드를 **5개 서비스**로 나누고, 과제·채점 연동은 AWS SNS/SQS 이벤트로 바꿨습니다.\n' +
     '과제 목록 조회를 Batch로 바꿔 과제 1,000개 기준 P95를 ==187→128ms(-31%)==로 단축했습니다.\n' +
-    '2026 AI Re-Local 해커톤(한국고등직업교육학회 주관)에서 ==혁신상==과 팀 MVP를 수상했습니다.'));
+    '2026 빛나는 인재 AI Re-Local 해커톤에서 ==혁신상==과 팀 MVP를 수상했습니다.'));
   const intro = await node(N('448:40')); intro.layoutSizingHorizontal = 'FILL'; intro.textAutoResize = 'HEIGHT';
   await rmBullet('448:48');                          // 서비스 분리는 약력 2번째 줄로
   done.push(await R('448:53', '과제마다 하던 하위 조회를 Batch로 묶어 과제 30개 기준 ==60회→2회==로 줄였습니다.'));
