@@ -52,8 +52,8 @@ async function applyResumeV4() {
   await rm('448:140');                               // BOJ 인증 줄은 포트폴리오로
   done.push(await plain(N('448:133'), '백엔드 1인 개발')); done.push(await plain(N('448:135'), '2025.11–현재'));
   done.push(await R('448:149', '문제 3,400건 상세 수집을 4개씩 병렬로 바꿔 ==55.6→12.2초(-78%)==,\n누락·중복 **0건**을 확인했습니다. (로컬 측정)'));
-  done.push(await R('448:154', '실패한 문제만 따로 남겨, 다시 시도할 때 빠진 문제 없이 이어서 모읍니다.'));
-  done.push(await R('458:8', '관리자 회원 목록의 N+1을 없애 DB 읽기를 ==11→2회==로 줄였습니다.'));
+  done.push(await R('448:154', '실패한 문제 ID를 Redis에 따로 남겨, 다시 시도할 때 빠진 문제 없이 이어서 모읍니다.'));
+  done.push(await R('458:8', '관리자 회원 목록의 N+1을 없애 MongoDB 읽기를 ==11→2회==로 줄였습니다.'));
   done.push(await addBullet(N('458:8'), '2,754줄 수집 서비스를 역할별 클래스 **13개**로 나눴습니다. (가장 큰 클래스 469줄)'));
 
   // ---- page 2: 고찌봄, SoloPlay, Skills, Growth(Community, Writing, Education & Certificates)
@@ -62,7 +62,7 @@ async function applyResumeV4() {
   done.push(await R('448:119', 'FE 라우트 16개와 API 계약 차이를 BFF 2개로 정리해 4일 안에 배포했습니다.'));
   await rmBullet('448:124');                         // 해커톤 수상은 약력 4번째 줄로
   await rm('448:195');                               // Kakao 정규화 줄은 포트폴리오로
-  done.push(await R('448:204', 'AI 소개·태그는 장소를 저장한 뒤 따로 채우도록 나눠,\n==AI 호출이 실패해도 장소 원본이 남게== 했습니다.'));
+  done.push(await R('448:204', 'Gemini 소개·태그는 장소를 저장한 뒤 비동기로 채우도록 나눠,\n==AI 호출이 실패해도 장소 원본이 남게== 했습니다.'));
   done.push(await R('458:13', '테스트 **99개**로 라인 커버리지 ==87.21%==를 확인하고 CI 통과 기준으로 걸었습니다.'));
   await take('448:76', p2); await take('448:78', p2);            // Skills
   for (const id of ['448:254', '448:206', '448:208', '448:210', '448:230', '448:232', '448:234', '448:278', '448:289', '448:291']) await take(id, p2);
