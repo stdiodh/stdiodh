@@ -5,7 +5,7 @@ usage: python3 build_plugin.py IMAGES_DIR   (hand-drawn PNGs from p3/sketch/out 
 import base64, json, pathlib, sys
 
 HERE = pathlib.Path(__file__).parent
-NAMES = ["arch", "cover", "ev", "batch", "gw", "bot", "tests", "didim-intro", "didim-collect", "didim-admin", "didim-split", "soloplay"]
+NAMES = ["arch", "cover", "ev", "batch", "gw", "bot", "tests", "didim-intro", "didim-collect", "didim-admin", "didim-split", "soloplay", "gozzi", "invest"]
 RUNNER = """
 (async () => {
   try {

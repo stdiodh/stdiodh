@@ -21,6 +21,7 @@ async function parts(n, list) {
 }
 async function link(n, text, url) { await setT(n, text); n.setRangeHyperlink(0, text.length, { type: 'URL', value: url }); }
 function imageHash(key) { if (!IMAGES[key]) throw new Error('이미지 없음: ' + key); return figma.createImage(figma.base64Decode(IMAGES[key])).hash; }
+function swapImg(n, key) { const h = imageHash(key); n.fills = n.fills.map(f => f.type === 'IMAGE' ? Object.assign({}, f, { imageHash: h }) : f); }
 function setImg(n, key, w, h) {
   n.x = 0; n.y = 0; n.resize(w, h);
   n.fills = [{ type: 'IMAGE', scaleMode: 'FILL', imageHash: imageHash(key) }];
@@ -87,6 +88,25 @@ async function applyCover(page) {
   return 'Final · 00';
 }
 
+// one continuous copy of the whole portfolio, in reading order, on the main page (sources stay as they are)
+const COMBINED = '포트폴리오 · 통합';
+async function buildCombined(page, dpage) {
+  for (const old of page.children.filter(c => c.name === COMBINED)) old.remove();
+  const order = ['Final · 00', ...PORDER], frames = [...page.children, ...dpage.children];
+  const COLS = 5, W = 1600, H = 900, GAP = 100, PAD = 100;
+  const sec = figma.createSection(); page.appendChild(sec); sec.name = COMBINED;
+  const right = Math.max(...page.children.filter(c => /^Final · 0\d$/.test(c.name)).map(c => c.x + c.width));
+  sec.x = right + 400; const c00 = page.children.find(c => c.name === 'Final · 00'); sec.y = c00 ? c00.y : 372;
+  sec.resizeWithoutConstraints(PAD * 2 + COLS * W + (COLS - 1) * GAP, PAD * 2 + Math.ceil(order.length / COLS) * (H + GAP) - GAP);
+  order.forEach((name, i) => {
+    const src = frames.find(c => c.name === name); if (!src) throw new Error('frame ' + name);
+    const f = src.clone(); sec.appendChild(f);
+    f.name = 'Portfolio ' + String(i).padStart(2, '0') + (i ? ' · ' + name.replace('Final · ', '') : ' · 표지');
+    f.x = PAD + (i % COLS) * (W + GAP); f.y = PAD + Math.floor(i / COLS) * (H + GAP);
+  });
+  return COMBINED + ' ' + order.length + '쪽';
+}
+
 async function applyPortfolio() {
   const page = await node('144:2'); await figma.setCurrentPageAsync(page);
   const done = [];
@@ -132,7 +152,8 @@ async function applyPortfolio() {
   // 05 고찌봄
   { const m = byId(await node('209:299')), d = PDATA.gozzi;
     await setT(m('209:306'), d.role); await richKeep(m('209:311'), d.title); await setT(m('209:313'), d.sub);
-    await fillItems(m, [['209:318', '209:320'], ['209:324', '209:326'], ['209:330', '209:332'], ['209:336', '209:338']], d.items); done.push('Final · 05'); }
+    await fillItems(m, [['209:318', '209:320'], ['209:324', '209:326'], ['209:330', '209:332'], ['209:336', '209:338']], d.items);
+    swapImg(m('209:352'), 'gozzi'); done.push('Final · 05'); }
 
   // 06 SoloPlay
   { const m = byId(await node('209:378')), d = PDATA.solo;
@@ -143,7 +164,8 @@ async function applyPortfolio() {
   // 07 Investopia
   { const m = byId(await node('209:436')), d = PDATA.invest;
     await setT(m('209:443'), d.role); await setT(m('209:450'), d.sub);
-    await fillItems(m, [['209:455', '209:457'], ['209:461', '209:463'], ['209:467', '209:469'], ['209:473', '209:475']], d.items); done.push('Final · 07'); }
+    await fillItems(m, [['209:455', '209:457'], ['209:461', '209:463'], ['209:467', '209:469'], ['209:473', '209:475']], d.items);
+    swapImg(m('209:486'), 'invest'); done.push('Final · 07'); }
 
   // footers "NN / 14" and cover page ranges
   const frames = [...page.children, ...dpage.children];
@@ -156,5 +178,6 @@ async function applyPortfolio() {
   await setT(cover('209:30'), no('Final · 02') + '-' + no('Final · 03c'));
   await setT(cover('209:38'), no('Final · 04a') + '-' + no('Final · 04c'));
   for (const [id, name] of [['209:46', 'Final · 05'], ['209:54', 'Final · 06'], ['209:62', 'Final · 07']]) await setT(cover(id), no(name));
+  done.push(await buildCombined(page, dpage));
   return done;
 }
