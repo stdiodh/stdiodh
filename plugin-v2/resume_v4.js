@@ -44,16 +44,17 @@ async function applyResumeV4() {
   done.push(await R('448:58', '테스트를 **188→602개**로 늘리며 CI 통과 기준을 Line ==70→86%==로 올렸습니다.'));
   const t58 = await node(N('448:58')); t58.layoutSizingHorizontal = 'FILL'; t58.textAutoResize = 'HEIGHT';
   done.push(await R('448:63', '테스트·성능 검증 job을 병렬로 나눠 CI 시간을 ==140→109초(-22%)==로 줄였습니다.'));
-  done.push(await R('448:68', '**141개** route와 권한 정책을 Gateway로 모으고,\n권한이 걸린 ==105개 경로==를 역할별 회귀 테스트로 고정했습니다.'));
-  done.push(await R('448:73', 'Go로 장애 알림·CloudWatch 로그 조회 봇을 만들어,\ntraceId 하나로 여러 서비스 로그를 함께 찾게 했습니다.'));
+  done.push(await R('448:68', '설정과 필터에 흩어진 **141개** API 경로의 권한 규칙을 Gateway로 모으고,\n권한이 걸린 ==105개 경로==의 판정이 옮기기 전과 같은지 테스트로 확인했습니다.'));
+  done.push(await R('448:73', 'EC2에 접속해 컨테이너 로그를 하나씩 열지 않도록 Go로 운영 봇을 만들어,\ntraceId 하나로 여러 서비스 로그를 Discord에서 함께 찾게 했습니다.'));
   await rm('448:76'); await rm('448:78');          // Skills → page 2
   await take('448:127', p1);                         // 디딤로그 (divider 448:74 stays above it)
   (await node(N('448:137'))).layoutSizingVertical = 'HUG';
   await rm('448:140');                               // BOJ 인증 줄은 포트폴리오로
-  done.push(await R('448:149', '문제 3,400건 상세 수집을 4개씩 병렬로 바꿔 ==55.6→12.2초(-78%)==,\n누락·중복 **0건**을 확인했습니다. (로컬 고정 지연 조건)'));
+  done.push(await plain(N('448:133'), '백엔드 1인 개발')); done.push(await plain(N('448:135'), '2025.11–현재'));
+  done.push(await R('448:149', '문제 3,400건 상세 수집을 4개씩 병렬로 바꿔 ==55.6→12.2초(-78%)==,\n누락·중복 **0건**을 확인했습니다. (로컬 측정)'));
   done.push(await R('448:154', 'Redis에 실패 ID 원장을 남겨, 재시도 때 실패·미처리 항목만 다시 수집합니다.'));
   done.push(await R('458:8', '관리자 회원 목록의 N+1을 없애 MongoDB 읽기를 ==11→2회==로 줄였습니다.'));
-  done.push(await addBullet(N('458:8'), '2,754줄짜리 수집 서비스를 협력 클래스 **13개**로 나눠 ==330줄==로 줄였습니다.'));
+  done.push(await addBullet(N('458:8'), '2,754줄 수집 서비스를 역할별 클래스 **13개**로 나눴습니다. (가장 큰 클래스 469줄)'));
 
   // ---- page 2: 고찌봄, SoloPlay, Skills, Growth(Community, Writing, Education & Certificates)
   const box = await node(N('448:113')); box.layoutSizingVertical = 'HUG';
