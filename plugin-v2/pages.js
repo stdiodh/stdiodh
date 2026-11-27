@@ -57,8 +57,10 @@ async function fillDetail(m, d) {
   await richKeep(m('209:166'), d.title);
   const T = ['209:171', '209:177', '209:183', '209:189'], B = ['209:173', '209:179', '209:185', '209:191'];
   for (let i = 0; i < 4; i++) { await richKeep(m(T[i]), d.steps[i][0]); await setT(m(B[i]), d.steps[i][1]); }
-  await setT(m('209:197'), d.metrics[0][0]); await setT(m('209:199'), d.metrics[0][1]);
-  await setT(m('209:202'), d.metrics[1][0]); await setT(m('209:204'), d.metrics[1][1]);
+  // metrics: only measured before→after values; 0–2 cells, empty cells hidden
+  const MC = [['209:195', '209:197', '209:199'], ['209:200', '209:202', '209:204']], ms = d.metrics || [];
+  m('209:194').visible = ms.length > 0;
+  for (let i = 0; i < 2; i++) { m(MC[i][0]).visible = !!ms[i]; if (ms[i]) { await setT(m(MC[i][1]), ms[i][0]); await setT(m(MC[i][2]), ms[i][1]); } }
   await setT(m('209:212'), d.caption);
   await link(m('209:215'), d.link[0], d.link[1]);
   setImg(m('209:208'), d.img, 874, 418);

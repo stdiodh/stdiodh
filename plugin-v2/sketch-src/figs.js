@@ -105,15 +105,16 @@ tests: { w:874, h:418, draw(){
   note(700,oy-2*sy-26,'후: 항상 2번',{a:'start',c:BLUE,size:15,w:700});
 }},
 'didim-split': { w:874, h:418, draw(){
-  box(40,70,200,280,{r:8});
-  text(140,96,'수집 서비스 한 파일',{size:14,w:700});
-  for(let i=0;i<10;i++) line(62,128+i*21,62+[150,120,140,90,155,110,135,80,150,120][i],128+i*21,{c:FAINT,sw:2});
-  note(140,374,'상태 저장 · 다시 시도 · 작업 점유 · 통계',{size:12});
-  arrow(256,210,320,210,{label:'역할별로',c:BLUE});
-  label(392,40,474,48,'원래 서비스: 각 클래스에 일을 넘기기만',{c:BLUE,size:14});
-  const names=['대상 수집','재시도 계획','작업 점유','상태 저장','Redis 스크립트','대상 목록','작업 시작','상태 조회','대상 검증','실행 루프','상태 계산','감사 로그','Redis 키'];
-  line(629,92,629,112,{c:BLUE});
-  names.forEach((n,i)=>{ const c=i%5, r=Math.floor(i/5); label(392+c*96,120+r*72,90,52,n,{size:13,w:600}); });
+  const X=176, K=0.245, bar=(y,n,h,c,fill)=>{ box(X,y,Math.max(n*K,6),h,{r:4,c,sw:1.4,fill,gap:4}); };
+  text(36,28,'전',{size:16,w:700,a:'start'});
+  text(X-14,62,'수집 서비스',{size:13,w:600,a:'end'}); bar(48,2754,28,INK,FAINT); text(X+2754*K-10,62,'2,754줄',{size:14,w:700,a:'end'});
+  line(36,96,850,96,{dash:true,c:FAINT,sw:1.1});
+  text(36,122,'후',{size:16,w:700,a:'start',c:BLUE});
+  const P=[['원래 서비스',330,1],['대상 수집',469],['재시도 계획',462],['작업 점유',404],['상태 저장',285],['Redis 스크립트',231],['대상 목록',223],['작업 시작',210],['상태 조회',162],['대상 검증',159],['실행 루프',101],['상태 계산',65],['감사 로그',59],['Redis 키',42]];
+  P.forEach(([n,v,f],k)=>{ const y=110+k*21.5; text(X-14,y+8,n,{size:13,w:f?700:500,a:'end',c:f?BLUE:SLATE}); bar(y,v,15,f?BLUE:INK); text(X+v*K+10,y+8,v+'줄',{size:13,w:600,a:'start',c:f?BLUE:INK}); });
+  note(560,250,'한 파일이 역할별 클래스 13개로',{size:14,c:INK,w:700});
+  note(560,276,'가장 큰 클래스도 469줄',{size:14,c:INK,w:600});
+  note(560,300,'원래 서비스는 일을 넘기기만',{size:13,c:BLUE,w:600});
 }},
 'didim-collect': { w:836, h:458, draw(){
   text(36,30,'전',{size:16,w:700,a:'start'});
