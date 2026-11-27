@@ -75,6 +75,10 @@ async function applyResumeV4() {
   await rm('448:309');
   for (const id of ['448:303', '448:308']) { const t = await node(N(id)); t.layoutSizingHorizontal = 'FILL'; t.textAutoResize = 'HEIGHT'; }
 
+  // layout: left columns hug content (removed bullets left gaps); 고찌봄 PM bullet first, top-aligned, full width
+  for (const id of ['448:53', '448:224']) { let row = await node(N(id)); while (row.name !== 'Row') row = row.parent; row.children[0].layoutSizingVertical = 'HUG'; }
+  { const t = await node(N('448:114')); const b = t.parent.parent; b.parent.insertChild(0, b); b.counterAxisAlignItems = 'MIN';
+    t.layoutSizingHorizontal = 'FILL'; t.textAutoResize = 'HEIGHT'; }
   const report = [overflowReport(p1), overflowReport(p2)];
   figma.viewport.scrollAndZoomIntoView([p1, p2]);
   return { done, report };
