@@ -140,8 +140,8 @@ soloplay: { w:310, h:525, draw(){
   arrow(155,86,155,112);
   label(x,116,w,h,'장소 ID로 중복 정리',{size:14});
   arrow(155,172,155,198);
-  label(x,202,w,h,'MongoDB에 먼저 저장',{size:14,c:GREEN});
-  note(148,280,'장소는 여기서 남음',{c:GREEN,w:600}); check(216,277,6);
+  label(x,202,w,h,'MongoDB에 먼저 저장',{size:14,c:BLUE});
+  note(148,280,'장소는 여기서 남음',{c:BLUE,w:600}); check(216,277,6);
   line(155,296,155,334,{dash:true,c:SLATE,sw:1.3}); head(155,296,155,338,SLATE,1.3);
   note(165,318,'저장이 끝난 뒤 따로',{a:'start'});
   label(x,344,w,h+6,'Gemini 소개·태그',{size:14,dash:true,c:SLATE});

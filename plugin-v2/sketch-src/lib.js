@@ -1,5 +1,5 @@
 // hand-drawn technical-note helpers (rough.js). Coordinates in CSS px.
-const INK='#1E293B', BLUE='#2563EB', GREEN='#15803D', RED='#DC2626', SLATE='#475569', FAINT='#CBD5E1';
+const INK='#1E293B', BLUE='#2563EB', GREEN='#15803D', RED='#334155', SLATE='#475569', FAINT='#CBD5E1';
 let svg, rc, SEED=11;
 function init(w,h){ svg=document.getElementById('s'); svg.setAttribute('width',w); svg.setAttribute('height',h); svg.setAttribute('viewBox',`0 0 ${w} ${h}`); rc=rough.svg(svg); }
 const O=o=>Object.assign({roughness:0.9,bowing:0.5,strokeWidth:1.6,stroke:INK,seed:SEED++,disableMultiStroke:false},o);
@@ -18,13 +18,13 @@ function text(x,y,s,o={}){ const t=document.createElementNS('http://www.w3.org/2
   lines.forEach((l,i)=>{const sp=document.createElementNS('http://www.w3.org/2000/svg','tspan'); sp.setAttribute('x',x); sp.setAttribute('y',y0+i*lh); sp.textContent=l; t.appendChild(sp);}); return add(t); }
 function label(x,y,w,h,s,o={}){ box(x,y,w,h,o); text(x+w/2,y+h/2+(o.dy||0),s,{size:o.size||14,w:o.w||600,c:o.tc||o.c||INK}); }
 function xmark(cx,cy,r=7,c=RED){ line(cx-r,cy-r,cx+r,cy+r,{c,sw:2.2}); line(cx-r,cy+r,cx+r,cy-r,{c,sw:2.2}); }
-function check(cx,cy,r=7,c=GREEN){ poly([[cx-r,cy],[cx-r/3,cy+r*0.75],[cx+r,cy-r*0.8]],{c,sw:2.2}); }
+function check(cx,cy,r=7,c=BLUE){ poly([[cx-r,cy],[cx-r/3,cy+r*0.75],[cx+r,cy-r*0.8]],{c,sw:2.2}); }
 function circle(cx,cy,d,o={}){ return add(rc.circle(cx,cy,d,O({stroke:o.c||INK,strokeWidth:o.sw||1.6,fill:o.fill,fillStyle:'hachure',hachureGap:5,strokeLineDash:o.dash?[6,6]:undefined}))); }
 function ellipse(cx,cy,w,h,o={}){ return add(rc.ellipse(cx,cy,w,h,O({stroke:o.c||INK,strokeWidth:o.sw||1.6,strokeLineDash:o.dash?[6,6]:undefined}))); }
 function db(cx,cy,w=44,h=50,s='DB',o={}){ const c=o.c||INK; ellipse(cx,cy-h/2+6,w,12,{c}); line(cx-w/2,cy-h/2+6,cx-w/2,cy+h/2-6,{c}); line(cx+w/2,cy-h/2+6,cx+w/2,cy+h/2-6,{c});
   add(rc.arc(cx,cy+h/2-6,w,12,0,Math.PI,false,O({stroke:c}))); if(s) text(cx,cy+4,s,{size:12,w:600,c}); }
 function note(x,y,s,o={}){ return text(x,y,s,Object.assign({size:13,c:SLATE,w:500},o)); }
-function hl(x,y,w,c='#FDE68A'){ add(rc.line(x,y,x+w,y,O({stroke:c,strokeWidth:9,roughness:1.4}))).setAttribute('opacity','0.7'); }
+function hl(x,y,w,c='#DBEAFE'){ add(rc.line(x,y,x+w,y,O({stroke:c,strokeWidth:9,roughness:1.4}))).setAttribute('opacity','0.7'); }
 
 function shot(x,y,w,h,key,o={}){ if(typeof SHOTS!=='undefined'&&SHOTS[key]){ const ns='http://www.w3.org/2000/svg'; const id='c'+(SEED++);
   const cp=document.createElementNS(ns,'clipPath'); cp.id=id; const r=document.createElementNS(ns,'rect'); r.setAttribute('x',x);r.setAttribute('y',y);r.setAttribute('width',w);r.setAttribute('height',h);r.setAttribute('rx',5); cp.appendChild(r); add(cp);
