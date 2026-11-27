@@ -28,10 +28,10 @@ ev: { w:874, h:418, draw(){
   text(L[0]+L[1]/2,rows[2]+hh/2+48,'관리자 화면은 여기만 읽음',{size:13,w:600,c:INK});
   // 남은 것
   box(L[0]-12,rows[0]-hh/2-12,L[1]+24,hh+24,{dash:true,c:SLATE,sw:1.2,r:12});
-  note(L[0]-8,rows[0]-hh/2-24,'남은 것: 저장과 발행이 한 번에 묶이지 않음',{a:'start'});
+  note(L[0]-8,rows[0]-hh/2-24,'다음 단계: 저장과 발행을 한 번에 묶기',{a:'start'});
   // legend
   xmark(R[0]+12,400,5); note(R[0]+24,400,'장애가 났던 곳',{a:'start'});
-  line(R[0]+112,400,R[0]+132,400,{dash:true,c:SLATE,sw:1.2}); note(R[0]+138,400,'남은 것',{a:'start'});
+  line(R[0]+112,400,R[0]+132,400,{dash:true,c:SLATE,sw:1.2}); note(R[0]+138,400,'다음 단계',{a:'start'});
 }},
 batch: { w:874, h:418, draw(){
   const base=330;
