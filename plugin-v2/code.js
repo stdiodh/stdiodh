@@ -590,17 +590,18 @@ async function kakaoText(t) {
   const segs = t.getStyledTextSegments(['fills', 'hyperlink', 'fontSize']).filter(s => solidAccent(s.fills));
   if (!segs.length) return 0;
   for (const s of segs) t.setRangeFills(s.start, s.end, [{ type: 'SOLID', color: KNAVY }]);   // color needs no font
-  // highlighter only on short phrases; a whole sentence in yellow reads as a block, so it stays navy only
+  // short phrases get a highlighter; a long sentence gets a thin yellow underline so two lines don't read as a block
   const short = s => s.characters.replace(/\s/g, '').length <= 18;
-  const marks = segs.filter(s => !s.hyperlink && s.characters.trim() && short(s)), plain = segs.filter(s => !s.hyperlink && !short(s));
-  if (!marks.length && !plain.length) return segs.length;
+  const marks = segs.filter(s => !s.hyperlink && s.characters.trim());
+  if (!marks.length) return segs.length;
   await loadNodeFonts(t);   // decoration needs the node's fonts
-  for (const s of plain) t.setRangeTextDecoration(s.start, s.end, 'NONE');
   for (const s of marks) {
+    const th = short(s) ? Math.round(s.fontSize * 0.4) : Math.max(2, Math.round(s.fontSize * 0.16));
+    const off = short(s) ? -Math.round(s.fontSize * 0.26) : 2;
     t.setRangeTextDecoration(s.start, s.end, 'UNDERLINE');
     t.setRangeTextDecorationColor(s.start, s.end, { value: { type: 'SOLID', color: KYEL } });
-    t.setRangeTextDecorationThickness(s.start, s.end, { unit: 'PIXELS', value: Math.round(s.fontSize * 0.4) });
-    t.setRangeTextDecorationOffset(s.start, s.end, { unit: 'PIXELS', value: -Math.round(s.fontSize * 0.26) });
+    t.setRangeTextDecorationThickness(s.start, s.end, { unit: 'PIXELS', value: th });
+    t.setRangeTextDecorationOffset(s.start, s.end, { unit: 'PIXELS', value: off });
     t.setRangeTextDecorationSkipInk(s.start, s.end, false);
   }
   return segs.length;
