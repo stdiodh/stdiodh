@@ -10,7 +10,7 @@ async function richKeep(n, md) {
   await figma.loadFontAsync(P('Bold'));
   const { out, ranges } = parse(md); n.characters = out;
   n.setRangeFontName(0, out.length, seg.fontName); n.setRangeFills(0, out.length, seg.fills);
-  for (const r of ranges) { n.setRangeFontName(r.st, r.en, P('Bold')); if (r.kind === '==') n.setRangeFills(r.st, r.en, [{ type: 'SOLID', color: OR }]); }
+  for (const r of ranges) { n.setRangeFontName(r.st, r.en, P('Bold')); n.setRangeFills(r.st, r.en, [{ type: 'SOLID', color: r.kind === '==' ? OR : NAVY }]); }
 }
 async function setT(n, text) { await loadNodeFonts(n); n.characters = text; }
 async function parts(n, list) {
@@ -53,7 +53,8 @@ async function fillIntro(m, d) {
   for (const [id, t] of [['209:93', d.head[0]], ['209:95', d.head[1]], ['209:97', d.head[2]]]) await setT(m(id), t);
   await richKeep(m('209:100'), d.title); await setT(m('209:102'), d.sub);
   const T = ['209:107', '209:113', '209:119', '209:125'], B = ['209:109', '209:115', '209:121', '209:127'];
-  for (let i = 0; i < 4; i++) { await richKeep(m(T[i]), d.items[i][0]); await setT(m(B[i]), d.items[i][1]); }
+  for (let i = 0; i < 4; i++) { await richKeep(m(T[i]), d.items[i][0]); await richKeep(m(B[i]), d.items[i][1]); }
+  await polish(m, '209:102', T, '209:103');
   await setT(m('209:148'), d.caption);
   const im = m('209:146');
   if (d.clone) {
@@ -69,20 +70,37 @@ async function fillDetail(m, d) {
   for (const [id, t] of [['209:159', d.head[0]], ['209:161', d.head[1]], ['209:163', d.head[2]]]) await setT(m(id), t);
   await richKeep(m('209:166'), d.title);
   const T = ['209:171', '209:177', '209:183', '209:189'], B = ['209:173', '209:179', '209:185', '209:191'];
-  for (let i = 0; i < 4; i++) { await richKeep(m(T[i]), d.steps[i][0]); await setT(m(B[i]), d.steps[i][1]); }
+  for (let i = 0; i < 4; i++) { await richKeep(m(T[i]), d.steps[i][0]); await richKeep(m(B[i]), d.steps[i][1]); }
   // metrics: only measured before→after values; 0–2 cells, empty cells hidden
   const MC = [['209:195', '209:197', '209:199'], ['209:200', '209:202', '209:204']], ms = d.metrics || [];
   m('209:194').visible = ms.length > 0;
   for (let i = 0; i < 2; i++) { m(MC[i][0]).visible = !!ms[i]; if (ms[i]) { await setT(m(MC[i][1]), ms[i][0]); await setT(m(MC[i][2]), ms[i][1]); } }
+  await polish(m, null, T, '209:167');
   await setT(m('209:212'), d.caption);
   await ghLink(m('209:215'), d.link[0], d.link[1]);
   setImg(m('209:208'), d.img, 874, 418);
 }
 
 async function fillItems(m, ids, items) {
-  for (let i = 0; i < items.length; i++) { if (!items[i]) continue; await richKeep(m(ids[i][0]), items[i][0]); await setT(m(ids[i][1]), items[i][1]); }
+  for (let i = 0; i < items.length; i++) { if (!items[i]) continue; await richKeep(m(ids[i][0]), items[i][0]); await richKeep(m(ids[i][1]), items[i][1]); }
 }
 
+
+// reading order: title > one-line summary (17px) > item titles (17px bold) > bodies (15px, one bold phrase)
+const SLATE7 = { r: 0.2, g: 0.2549, b: 0.3333 }; // #334155
+async function polish(m, sub, titles, margin) {
+  if (sub) {
+    const t = m(sub); await loadNodeFonts(t);
+    t.fontSize = 17; t.lineHeight = { unit: 'PIXELS', value: 27 }; t.fills = [{ type: 'SOLID', color: SLATE7 }];
+    const para = t.parent; para.layoutSizingVertical = 'HUG'; para.paddingTop = 16;
+  }
+  const mg = m(margin); mg.layoutSizingVertical = 'HUG'; mg.paddingTop = 28;
+  for (const id of titles) {
+    const t = m(id); await loadNodeFonts(t);
+    t.fontSize = 17; t.lineHeight = { unit: 'PIXELS', value: 24 }; t.fills = [{ type: 'SOLID', color: NAVY }];
+    const item = t.parent.parent; item.paddingTop = 12; item.paddingBottom = 14; item.itemSpacing = 6;
+  }
+}
 
 // one continuous copy of the whole portfolio, in reading order, on the main page (sources stay as they are)
 const COMBINED = '포트폴리오 · 통합';
@@ -145,25 +163,25 @@ async function applyPortfolio() {
     await fillItems(m, [['209:261', '209:263'], ['209:267', '209:269'], ['209:273', '209:275'], ['209:279', '209:281']], d.items);
     const M = [['209:241', '209:243', '209:245'], ['209:248', '209:250', '209:252']];
     for (let i = 0; i < 2; i++) for (let j = 0; j < 3; j++) await setT(m(M[i][j]), d.metrics[i][j]);
-    await setT(m('209:237'), d.caption); setImg(m('209:235'), d.img, 836, 458); await ghKeep(m('209:291'), 'GitHub'); done.push('Final · 04'); }
+    await setT(m('209:237'), d.caption); setImg(m('209:235'), d.img, 836, 458); await polish(m, '209:256', ['209:261', '209:267', '209:273', '209:279'], '209:257'); await ghKeep(m('209:291'), 'GitHub'); done.push('Final · 04'); }
 
   // 05 고찌봄
   { const m = byId(await node('209:299')), d = PDATA.gozzi;
     await setT(m('209:306'), d.role); await richKeep(m('209:311'), d.title); await setT(m('209:313'), d.sub);
     await fillItems(m, [['209:318', '209:320'], ['209:324', '209:326'], ['209:330', '209:332'], ['209:336', '209:338']], d.items);
-    swapImg(m('209:352'), 'gozzi'); await ghKeep(m('209:348'), 'GitHub'); done.push('Final · 05'); }
+    swapImg(m('209:352'), 'gozzi'); await polish(m, '209:313', ['209:318', '209:324', '209:330', '209:336'], '209:314'); await ghKeep(m('209:348'), 'GitHub'); done.push('Final · 05'); }
 
   // 06 SoloPlay
   { const m = byId(await node('209:378')), d = PDATA.solo;
     await setT(m('209:385'), d.role); await richKeep(m('209:396'), d.title); await setT(m('209:398'), d.sub);
     await fillItems(m, [['209:403', '209:405'], ['209:409', '209:411'], ['209:415', '209:417'], ['209:421', '209:423']], d.items);
-    await setT(m('209:394'), d.caption); setImg(m('209:392'), d.img, 310, 525); await ghKeep(m('209:428'), 'GitHub'); done.push('Final · 06'); }
+    await setT(m('209:394'), d.caption); setImg(m('209:392'), d.img, 310, 525); await polish(m, '209:398', ['209:403', '209:409', '209:415', '209:421'], '209:399'); await ghKeep(m('209:428'), 'GitHub'); done.push('Final · 06'); }
 
   // 07 Investopia
   { const m = byId(await node('209:436')), d = PDATA.invest;
     await setT(m('209:443'), d.role); await setT(m('209:450'), d.sub);
     await fillItems(m, [['209:455', '209:457'], ['209:461', '209:463'], ['209:467', '209:469'], ['209:473', '209:475']], d.items);
-    swapImg(m('209:486'), 'invest'); await ghKeep(m('209:480'), 'GitHub'); done.push('Final · 07'); }
+    await richKeep(m('209:448'), d.title); swapImg(m('209:486'), 'invest'); await polish(m, '209:450', ['209:455', '209:461', '209:467', '209:473'], '209:451'); await ghKeep(m('209:480'), 'GitHub'); done.push('Final · 07'); }
 
   // footers "NN / 14" and cover page ranges
   const frames = [...page.children, ...dpage.children];
