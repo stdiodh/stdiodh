@@ -590,9 +590,12 @@ async function kakaoText(t) {
   const segs = t.getStyledTextSegments(['fills', 'hyperlink', 'fontSize']).filter(s => solidAccent(s.fills));
   if (!segs.length) return 0;
   for (const s of segs) t.setRangeFills(s.start, s.end, [{ type: 'SOLID', color: KNAVY }]);   // color needs no font
-  const marks = segs.filter(s => !s.hyperlink && s.characters.trim());
-  if (!marks.length) return segs.length;
+  // highlighter only on short phrases; a whole sentence in yellow reads as a block, so it stays navy only
+  const short = s => s.characters.replace(/\s/g, '').length <= 18;
+  const marks = segs.filter(s => !s.hyperlink && s.characters.trim() && short(s)), plain = segs.filter(s => !s.hyperlink && !short(s));
+  if (!marks.length && !plain.length) return segs.length;
   await loadNodeFonts(t);   // decoration needs the node's fonts
+  for (const s of plain) t.setRangeTextDecoration(s.start, s.end, 'NONE');
   for (const s of marks) {
     t.setRangeTextDecoration(s.start, s.end, 'UNDERLINE');
     t.setRangeTextDecorationColor(s.start, s.end, { value: { type: 'SOLID', color: KYEL } });
