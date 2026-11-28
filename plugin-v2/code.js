@@ -708,16 +708,16 @@ const PROJECT_PAGES = { 'A&I.com': ['02', '02a', '03', '03a', '03b', '03c'], '�
 
 // "기술을 고른 이유" page: built from a detail page clone so header and footer match the other pages
 const TECH = [
-  ['공통 · Kotlin + Spring', '백엔드가 처음이라 읽기 쉬운 코드가 가장 중요했습니다. Spring 생태계는 그대로 쓰면서, nullable 타입과 data class로 **null 가능성과 데이터 구조가 문법에 드러나는** Kotlin을 골랐습니다.',
+  ["공통 · Kotlin + Spring", "백엔드가 처음이라 읽기 쉬운 코드가 가장 중요했습니다.\nSpring 생태계는 그대로 쓰면서, **nullable 타입으로 null 여부가 드러나고**\ndata class로 데이터 구조가 한눈에 보이는 Kotlin을 골랐습니다.",
     ['Velog · 코프링이라고 들어보셨나요?', 'https://velog.io/@stdiodh/%EC%BD%94%ED%94%84%EB%A7%81%EC%9D%B4%EB%9D%BC%EA%B3%A0-%EB%93%A4%EC%96%B4%EB%B3%B4%EC%85%A8%EB%82%98%EC%9A%94']],
-  ['A&I · 과제↔채점은 SNS/SQS 이벤트', '과제 서버가 채점 서버를 직접 호출하면, 채점이 느릴 때 과제 화면까지 멈춥니다. 학생 팀이 운영비를 직접 내야 해서, 메시지 브로커 서버를 따로 띄우지 않고 **쓴 만큼 내는 AWS 관리형 SNS/SQS** 이벤트로 나눴습니다.'],
-  ['A&I · Gateway traceId와 Go 운영 봇', '채점이 실패할 때마다 EC2에 접속해 컨테이너 로그를 하나씩 열어야 했습니다. Gateway가 요청마다 traceId를 붙이고, Go로 만든 Discord 봇이 **traceId 하나로 여러 서비스의 CloudWatch 로그**를 한 번에 조회합니다. 처음 쓰는 Go는 Claude Code·Codex와 함께 만들었고, 최근 성공한 CI 8번에서 봇 테스트는 13~46초에 끝났습니다.'],
-  ['디딤로그 · 실패 ID는 Redis Set에', '수집 작업이 중간에 멈추면 checkpoint(어디까지 했는지)만으로는 실패한 문제를 다시 찾을 수 없었습니다. 작업 상태가 이미 있는 Redis에 **실패 ID를 Set으로** 함께 남기고, 상태 확인과 기록은 Lua 스크립트 하나로 묶었습니다. 재시도 테스트에서 복구되지 않은 문제가 1건에서 0건이 됐습니다.'],
-  ['디딤로그 · 병렬 수집에 동시성 상한', '문제 상세 수집은 대부분 외부 응답을 기다리는 시간이었습니다. 외부 대기만 병렬로 돌리되 **외부 사이트로 가는 동시 요청 수에 상한**을 둬 설정으로 1~16까지 바꿀 수 있게 했고, MongoDB·Redis 저장은 coordinator 스레드 한 곳에서 순서대로 합니다. 같은 조건에서 3,400건을 동시성 4로 돌려 55.6초가 12.2초가 됐습니다.'],
-  ['고찌봄 · 화면용 API 2개(BFF)', 'FE 라우트 16개와 BE API는 경로·응답 형식·enum 표기가 달랐습니다. FE를 세분화된 API에 맞추기엔 4일 해커톤에서 작업량과 위험이 컸습니다. 기존 API는 그대로 두고, 실제로 쓰는 **두 화면에만 맞춘 BFF API**를 만들었습니다.'],
-  ['SoloPlay · 장소 저장과 AI 보강 분리', 'Kakao Local 검색과 Gemini 소개·태그 보강을 한 흐름에서 하면, Gemini가 실패할 때 장소 저장까지 실패합니다. 장소를 MongoDB에 먼저 저장하고 보강은 별도 coroutine에서 처리해 **Gemini가 실패해도 장소는 남게** 했습니다.'],
+  ["A&I · 과제↔채점은 SNS/SQS 이벤트", "과제 서버는 문제·테스트케이스를 채점 서버에 넘기고, 결과를 다시 받아야 합니다.\n직접 호출로 묶으면 채점 서버가 느릴 때 과제 쪽 요청도 같이 기다립니다.\n학생 팀이 운영비를 직접 내야 해서 브로커 서버를 따로 띄우지 않고,\n**쓴 만큼 내는 AWS 관리형 SNS/SQS** 이벤트로 주고받게 했습니다."],
+  ["A&I · Gateway traceId와 Go 운영 봇", "채점이 실패할 때마다 EC2에 접속해 컨테이너 로그를 하나씩 열어야 했습니다.\nGateway가 요청마다 traceId를 붙이고, Go로 만든 Discord 봇이\n**traceId 하나로 여러 서비스의 CloudWatch 로그**를 한 번에 조회합니다.\n처음 쓰는 Go는 Claude Code·Codex와 함께 만들었고,\n최근 성공한 CI 8번에서 봇 테스트는 13~46초에 끝났습니다."],
+  ["디딤로그 · 실패 ID는 Redis Set에", "수집 작업이 중간에 멈추면 checkpoint(어디까지 했는지)만으로는 실패한 문제를 다시 찾을 수 없었습니다.\n작업 상태가 이미 있는 Redis에 **실패 ID를 Set으로** 함께 남기고,\n상태 확인과 기록은 Lua 스크립트 하나로 묶었습니다.\n재시도 테스트에서 복구되지 않은 문제가 1건에서 0건이 됐습니다."],
+  ["디딤로그 · 병렬 수집에 동시성 상한", "문제 상세 수집은 대부분 외부 응답을 기다리는 시간이었습니다.\n외부 대기만 병렬로 돌리고, **동시 요청 수에 상한**(설정 1~16)을 뒀습니다.\nMongoDB·Redis 저장은 coordinator 스레드 한 곳에서 순서대로 합니다.\n같은 조건에서 3,400건을 동시성 4로 돌려 55.6초에서 12.2초로 줄었습니다."],
+  ["고찌봄 · 화면용 API 2개(BFF)", "FE 라우트 16개가 기대하는 형식과 BE API의 경로·응답 형식·enum 표기가 달랐습니다.\nFE를 세분화된 API에 맞추기엔 4일 해커톤에서 작업량과 위험이 컸습니다.\n기존 API는 그대로 두고, 실제로 쓰는 **두 화면에만 맞춘 BFF API**를 만들었습니다."],
+  ["SoloPlay · 장소 저장과 AI 보강 분리", "Kakao Local 검색과 Gemini 소개·태그 보강을 한 흐름에서 하면,\nGemini가 실패할 때 장소 저장까지 실패할 수 있습니다.\n장소를 MongoDB에 먼저 저장하고 보강은 별도 coroutine에서 처리해\n**Gemini가 실패해도 장소는 남게** 했습니다."],
 ];
-// texts an earlier build (28c9c0e) wrote; a tech page made only of these is rebuilt, a hand-edited one is left alone
+// texts earlier builds (28c9c0e, 78c37a1) wrote; a tech page made only of these is rebuilt, a hand-edited one is left alone
 const TECH_OLD = [
   ['공통 · Kotlin + Spring', '백엔드가 처음이라 읽기 쉬운 코드가 가장 중요했습니다. Spring 생태계는 그대로 쓰면서 **null 가능성과 데이터 구조가 문법에 드러나는** Kotlin을 골랐습니다.',
     ['Velog · 코프링이라고 들어보셨나요?', 'https://velog.io/@stdiodh/%EC%BD%94%ED%94%84%EB%A7%81%EC%9D%B4%EB%9D%BC%EA%B3%A0-%EB%93%A4%EC%96%B4%EB%B3%B4%EC%85%A8%EB%82%98%EC%9A%94']],
@@ -727,7 +727,16 @@ const TECH_OLD = [
   ['디딤로그 · 병렬 수집 상한 4', '외부 사이트로 가는 **동시 요청 수에 상한**을 두고, 설정으로 1~16까지 바꿀 수 있게 했습니다.'],
   ['고찌봄 · 화면용 API 2개(BFF)', '16개 화면을 세분화된 API에 맞추기엔 4일 해커톤에서 작업량과 위험이 컸습니다. 실제로 쓰는 **두 화면에만 맞춘 API**를 만들었습니다.'],
   ['SoloPlay · 장소 저장과 AI 보강 분리', '둘은 실패하는 조건이 달라서, **AI가 실패해도 장소는 남게** 했습니다.'],
-];
+].concat([
+  ['공통 · Kotlin + Spring', '백엔드가 처음이라 읽기 쉬운 코드가 가장 중요했습니다. Spring 생태계는 그대로 쓰면서, nullable 타입과 data class로 **null 가능성과 데이터 구조가 문법에 드러나는** Kotlin을 골랐습니다.',
+    ['Velog · 코프링이라고 들어보셨나요?', 'https://velog.io/@stdiodh/%EC%BD%94%ED%94%84%EB%A7%81%EC%9D%B4%EB%9D%BC%EA%B3%A0-%EB%93%A4%EC%96%B4%EB%B3%B4%EC%85%A8%EB%82%98%EC%9A%94']],
+  ['A&I · 과제↔채점은 SNS/SQS 이벤트', '과제 서버가 채점 서버를 직접 호출하면, 채점이 느릴 때 과제 화면까지 멈춥니다. 학생 팀이 운영비를 직접 내야 해서, 메시지 브로커 서버를 따로 띄우지 않고 **쓴 만큼 내는 AWS 관리형 SNS/SQS** 이벤트로 나눴습니다.'],
+  ['A&I · Gateway traceId와 Go 운영 봇', '채점이 실패할 때마다 EC2에 접속해 컨테이너 로그를 하나씩 열어야 했습니다. Gateway가 요청마다 traceId를 붙이고, Go로 만든 Discord 봇이 **traceId 하나로 여러 서비스의 CloudWatch 로그**를 한 번에 조회합니다. 처음 쓰는 Go는 Claude Code·Codex와 함께 만들었고, 최근 성공한 CI 8번에서 봇 테스트는 13~46초에 끝났습니다.'],
+  ['디딤로그 · 실패 ID는 Redis Set에', '수집 작업이 중간에 멈추면 checkpoint(어디까지 했는지)만으로는 실패한 문제를 다시 찾을 수 없었습니다. 작업 상태가 이미 있는 Redis에 **실패 ID를 Set으로** 함께 남기고, 상태 확인과 기록은 Lua 스크립트 하나로 묶었습니다. 재시도 테스트에서 복구되지 않은 문제가 1건에서 0건이 됐습니다.'],
+  ['디딤로그 · 병렬 수집에 동시성 상한', '문제 상세 수집은 대부분 외부 응답을 기다리는 시간이었습니다. 외부 대기만 병렬로 돌리되 **외부 사이트로 가는 동시 요청 수에 상한**을 둬 설정으로 1~16까지 바꿀 수 있게 했고, MongoDB·Redis 저장은 coordinator 스레드 한 곳에서 순서대로 합니다. 같은 조건에서 3,400건을 동시성 4로 돌려 55.6초가 12.2초가 됐습니다.'],
+  ['고찌봄 · 화면용 API 2개(BFF)', 'FE 라우트 16개와 BE API는 경로·응답 형식·enum 표기가 달랐습니다. FE를 세분화된 API에 맞추기엔 4일 해커톤에서 작업량과 위험이 컸습니다. 기존 API는 그대로 두고, 실제로 쓰는 **두 화면에만 맞춘 BFF API**를 만들었습니다.'],
+  ['SoloPlay · 장소 저장과 AI 보강 분리', 'Kakao Local 검색과 Gemini 소개·태그 보강을 한 흐름에서 하면, Gemini가 실패할 때 장소 저장까지 실패합니다. 장소를 MongoDB에 먼저 저장하고 보강은 별도 coroutine에서 처리해 **Gemini가 실패해도 장소는 남게** 했습니다.'],
+]);
 const TECH_TITLE = '기술마다 **풀려던 문제**부터 적었습니다.';
 function techStrings() { const s = new Set([parse(TECH_TITLE).out]); for (const [h, md, ln] of TECH.concat(TECH_OLD)) { s.add(parse(h).out); s.add(parse(md).out); if (ln) s.add(ln[0] + ' ↗'); } return s; }
 function techIsPluginText(f) { const cols = f.findOne(n => n.name === 'Columns'); if (!cols) return false; const ok = techStrings();
@@ -755,11 +764,11 @@ async function buildTechPage(sec, frames, key) {
   const left = vbox('Left', 0), right = vbox('Right', 0); cols.appendChild(left); cols.appendChild(right);
   left.layoutSizingHorizontal = 'FILL'; right.layoutSizingHorizontal = 'FILL';
   for (const [i, [h, md, ln]] of TECH.entries()) {
-    const item = vbox('Tech · ' + (i + 1), 6); item.paddingTop = 14; item.paddingBottom = 16;
+    const item = vbox('Tech · ' + (i + 1), 6); item.paddingTop = 16; item.paddingBottom = 18;
     item.strokes = [{ type: 'SOLID', color: RULE }]; item.strokeTopWeight = 1; item.strokeBottomWeight = 0; item.strokeLeftWeight = 0; item.strokeRightWeight = 0;
     (i < 3 ? left : right).appendChild(item); item.layoutSizingHorizontal = 'FILL';
     const ht = await techText(h, 17, 24, INK, 'Bold'); item.appendChild(ht); ht.layoutSizingHorizontal = 'FILL';
-    const bt = await techText(md, 15, 23, BODY, 'Regular'); item.appendChild(bt); bt.layoutSizingHorizontal = 'FILL';
+    const bt = await techText(md, 15, 24, BODY, 'Regular'); item.appendChild(bt); bt.layoutSizingHorizontal = 'FILL';
     if (ln) { const lt = await techText(ln[0] + ' ↗', 13, 20, INK, 'Regular'); lt.setRangeHyperlink(0, ln[0].length, { type: 'URL', value: ln[1] }); lt.setRangeTextDecoration(0, ln[0].length, 'UNDERLINE'); item.appendChild(lt); }
   }
   return f;
@@ -816,6 +825,15 @@ async function applyBrandPortfolio() {
     const want = r.lo === r.hi ? String(r.lo).padStart(2, '0') : String(r.lo).padStart(2, '0') + '-' + String(r.hi).padStart(2, '0');
     const t = r.row.findOne(x => x.type === 'TEXT' && /^\d\d(-\d\d)?$/.test(x.characters));
     if (t && t.characters !== want) { await loadNodeFonts(t); t.characters = want; }
+  }
+  // cover index: one row for the tech page, above the projects
+  if (BR.techPage && rows.length && !cover.findOne(x => x.type === 'TEXT' && x.characters === '기술 선택')) {
+    const first = rows[0].row, par = first.parent, r = first.clone(); par.insertChild(par.children.indexOf(first), r);
+    const ts = r.findAll(x => x.type === 'TEXT'), vals = ['기술 선택', 'Kotlin·SNS/SQS·Redis·BFF 등 7가지를 고른 이유', no('tech')];
+    for (let i = 0; i < Math.min(3, ts.length); i++) { await loadNodeFonts(ts[i]); ts[i].characters = vals[i]; }
+    if (par.layoutMode === 'VERTICAL' && par.primaryAxisSizingMode === 'FIXED') par.resize(par.width, par.height + r.height);
+    const head = par.findOne(x => x.type === 'TEXT' && x.characters === '5개 프로젝트'); if (head) { await loadNodeFonts(head); head.characters = '5개 프로젝트 · 기술 선택'; }
+    rep.push('표지 목차에 기술 선택 줄');
   }
   if (moved) rep.push('순서·쪽 번호 ' + moved + '장 조정');
   const s = await brandStyle(sec);
