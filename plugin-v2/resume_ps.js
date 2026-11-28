@@ -3,7 +3,7 @@
 async function applyProblemSolving() {
   const page = await node('375:4'); await figma.setCurrentPageAsync(page);
   const p2 = page.children.find(c => c.name === V4.p2); if (!p2) throw new Error('resume_v4_02가 없습니다');
-  for (const k of p2.children.filter(c => c.name.startsWith('PS · '))) k.remove();
+  if (p2.children.some(c => c.name.startsWith('PS · '))) return 'Problem Solving은 이미 있어 그대로 둠';
   const isSub = (c, txt) => c.name === 'SubSec' && c.findOne(n => n.type === 'TEXT' && n.characters.trim() === txt);
   const kids = p2.children;
   const eduSub = kids.find(c => isSub(c, 'Education & Certificates')); if (!eduSub) throw new Error('Education 칸을 찾지 못했습니다');

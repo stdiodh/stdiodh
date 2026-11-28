@@ -21,6 +21,9 @@ RUNNER = """
     }
     if (!pages.includes('144:2')) throw new Error('이 파일은 대상이 아닙니다');
     if (!Object.keys(IMAGES).length) throw new Error('이번 빌드는 이력서용입니다. 포트폴리오는 다음 빌드로 실행해 주세요');
+    // portfolio is already built: change only the cover line so hand edits stay
+    const pg = figma.root.children.find(x => x.id === '144:2'); await pg.loadAsync();
+    if (pg.children.some(c => c.name === COMBINED)) { figma.closePlugin('완료: ' + await applyNumFix()); return; }
     const done = await applyPortfolio();
     figma.closePlugin('완료: ' + done.length + '개 수정');
   } catch (e) {
@@ -31,7 +34,7 @@ RUNNER = """
 
 def main(img_dir):
     imgs = {n: base64.b64encode((pathlib.Path(img_dir) / f"{n}.png").read_bytes()).decode() for n in NAMES} if img_dir else {}
-    parts = [(HERE / f).read_text(encoding="utf-8").rstrip() for f in ["lib.js", "resume.js", "resume_v4.js", "resume_ps.js", "pages_data.js", "pages.js"]]
+    parts = [(HERE / f).read_text(encoding="utf-8").rstrip() for f in ["lib.js", "resume.js", "resume_v4.js", "resume_ps.js", "pages_data.js", "pages.js", "numfix.js"]]
     parts.append("const IMAGES = " + json.dumps(imgs) + ";")
     (HERE / "code.js").write_text("\n".join(parts) + "\n" + RUNNER, encoding="utf-8")
     print("code.js", (HERE / "code.js").stat().st_size, "bytes")
