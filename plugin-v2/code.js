@@ -589,10 +589,11 @@ const solidAccent = fills => Array.isArray(fills) && fills.some(f => f.type === 
 async function kakaoText(t) {
   const segs = t.getStyledTextSegments(['fills', 'hyperlink', 'fontSize']).filter(s => solidAccent(s.fills));
   if (!segs.length) return 0;
-  await loadNodeFonts(t);
-  for (const s of segs) {
-    t.setRangeFills(s.start, s.end, [{ type: 'SOLID', color: KNAVY }]);
-    if (s.hyperlink || !s.characters.trim()) continue;
+  for (const s of segs) t.setRangeFills(s.start, s.end, [{ type: 'SOLID', color: KNAVY }]);   // color needs no font
+  const marks = segs.filter(s => !s.hyperlink && s.characters.trim());
+  if (!marks.length) return segs.length;
+  await loadNodeFonts(t);   // decoration needs the node's fonts
+  for (const s of marks) {
     t.setRangeTextDecoration(s.start, s.end, 'UNDERLINE');
     t.setRangeTextDecorationColor(s.start, s.end, { value: { type: 'SOLID', color: KYEL } });
     t.setRangeTextDecorationThickness(s.start, s.end, { unit: 'PIXELS', value: Math.round(s.fontSize * 0.4) });
@@ -616,9 +617,12 @@ function kakaoShapes(root) {
   return n;
 }
 async function kakaoStyle(root) {
-  let t = 0; for (const x of root.findAll(n => n.type === 'TEXT')) t += await kakaoText(x);
+  let t = 0; const skipped = [];
+  for (const x of root.findAll(n => n.type === 'TEXT')) { try { t += await kakaoText(x); } catch (e) { skipped.push(x.characters.slice(0, 10)); } }
+  if (skipped.length) KSKIP.push(...skipped);
   return { text: t, shapes: kakaoShapes(root) };
 }
+const KSKIP = [];   // texts whose fonts could not be loaded on this computer
 // set text keeping the node's regular style; **x** = bold navy with highlighter
 async function kakaoRich(t, md) {
   await loadNodeFonts(t); const seg = t.getStyledTextSegments(['fontName', 'fills']).find(s => s.fontName.style !== 'Bold');
@@ -666,6 +670,7 @@ async function applyKakaoResume() {
   }
   const s1 = await kakaoStyle(k1), s2 = await kakaoStyle(k2);
   rep.push('강조 ' + (s1.text + s2.text) + '곳 남색·노랑', overflowReport(k1), overflowReport(k2));
+  if (KSKIP.length) rep.push('글꼴이 없어 밑줄 못 넣음: ' + KSKIP.join(', '));
   return '이력서 사본: ' + rep.join(' · ');
 }
 
@@ -721,6 +726,7 @@ async function applyKakaoPortfolio() {
   }
   const s = await kakaoStyle(sec);
   rep.push('강조 글자 ' + s.text + '곳 · 선·아이콘 ' + s.shapes + '곳');
+  if (KSKIP.length) rep.push('글꼴이 없어 밑줄 못 넣음: ' + KSKIP.join(', '));
   return '포트폴리오 사본: ' + rep.join(' · ');
 }
 const IMAGES = {};
