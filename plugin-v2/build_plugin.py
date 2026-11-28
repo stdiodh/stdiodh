@@ -11,8 +11,12 @@ RUNNER = """
   try {
     const pages = figma.root.children.map(p=>p.id);
     if (pages.includes('375:4')) {
-      const r = await applyResumeV4();
-      figma.closePlugin('완료: ' + r.done.length + '개 수정 · ' + r.report.join(' · '));
+      // resume_v4 is edited by hand now: never rebuild it if it exists, only add Problem Solving
+      const p = figma.root.children.find(x => x.id === '375:4'); await p.loadAsync();
+      let msg = '';
+      if (!p.children.some(c => c.name === V4.p1)) { const r = await applyResumeV4(); msg = r.done.length + '개 수정 · '; }
+      const rep = await applyProblemSolving();
+      figma.closePlugin('완료: ' + msg + 'Problem Solving 추가 · ' + rep);
       return;
     }
     if (!pages.includes('144:2')) throw new Error('이 파일은 대상이 아닙니다');
@@ -27,7 +31,7 @@ RUNNER = """
 
 def main(img_dir):
     imgs = {n: base64.b64encode((pathlib.Path(img_dir) / f"{n}.png").read_bytes()).decode() for n in NAMES} if img_dir else {}
-    parts = [(HERE / f).read_text(encoding="utf-8").rstrip() for f in ["lib.js", "resume.js", "resume_v4.js", "pages_data.js", "pages.js"]]
+    parts = [(HERE / f).read_text(encoding="utf-8").rstrip() for f in ["lib.js", "resume.js", "resume_v4.js", "resume_ps.js", "pages_data.js", "pages.js"]]
     parts.append("const IMAGES = " + json.dumps(imgs) + ";")
     (HERE / "code.js").write_text("\n".join(parts) + "\n" + RUNNER, encoding="utf-8")
     print("code.js", (HERE / "code.js").stat().st_size, "bytes")
